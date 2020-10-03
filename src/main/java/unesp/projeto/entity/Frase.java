@@ -1,18 +1,26 @@
 package unesp.projeto.entity;
 
-import unesp.projeto.entity.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(name="frase")
 public class Frase {
-    private long idFrase;
+
+    @Id
+    private long id_frase;
+
     private String frase;
-    private Pessoa idPessoa;
-    private Sentimento idSentimento;
+    private String sentimento;
+
+    //    private Pessoa idPessoa;
+//    private Sentimento idSentimento;
 }
