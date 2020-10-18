@@ -1,0 +1,9 @@
+query
+{
+    getAllSentimentos
+    {
+        id
+        nome
+        descricao
+    }
+}

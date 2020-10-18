@@ -1,0 +1,50 @@
+type Query {
+  getAllSentimento: [Sentimento]
+
+  getAllFrase: [Frase]
+
+  allUsuarios: [Usuario]
+
+  getRandomAnalise(id_sentimento: ID!): Analise
+}
+
+type Mutation {
+  addFrase(frase: String!): Frase!
+  deleteFrase(id: ID!): Boolean!
+
+  addSentimento(nome: String!, emoticon: String!, descricao: String!): Boolean
+  deleteSentimento(id: ID!): Boolean
+
+  addUsuario(nome: String!): Usuario!
+
+  addAnalise(id_frase: ID!, id_sentimento: ID!, id_usuario: ID!, correto: Int): Boolean
+  makeAnalise(id_frase: ID!, id_usuario: ID!): Boolean
+  updateCorreto(id_analise: ID!, correto: Int): Boolean
+}
+
+type Frase {
+ id: ID
+ texto: String!
+}
+
+type Sentimento {
+  id: ID
+  nome: String!
+  emoticon: String!
+  descricao: String!
+}
+
+type Usuario {
+  id: ID
+  nome: String!
+}
+
+type Analise {
+    id: ID
+    frase: Frase!
+    sentimento: Sentimento!
+    usuario: Usuario!
+    novo: Int
+    correto: Int
+}
+
