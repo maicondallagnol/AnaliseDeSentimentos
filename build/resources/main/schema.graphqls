@@ -5,6 +5,8 @@ type Query {
 
   allUsuarios: [Usuario]
 
+  getAnalises(id_usuario: ID!): [Analise]
+
   getRandomAnalise(id_sentimento: ID!): Analise
 }
 
@@ -18,7 +20,7 @@ type Mutation {
   addUsuario(nome: String!): Usuario!
 
   addAnalise(id_frase: ID!, id_sentimento: ID!, id_usuario: ID!, correto: Int): Boolean
-  makeAnalise(id_frase: ID!, id_usuario: ID!): Boolean
+  makeAnalise(id_frase: ID!, id_usuario: ID!): Analise
   updateCorreto(id_analise: ID!, correto: Int): Boolean
 }
 

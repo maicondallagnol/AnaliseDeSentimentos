@@ -19,14 +19,14 @@ import java.util.List;
 @Component
 public class ML implements GraphQLMutationResolver {
 
-    String model = "/home/maicondallagnol/Documentos/Faculdade/2020/SOO/Trabalho/projeto/src/main/resources/models/classificador.model";
+    String model = "/home/maicondallagnol/Documentos/Faculdade/2020/SOO/AnaliseDeSentimentos/src/main/resources/models/classificador.model";
 
     private Instances queryBaseForWeka() throws Exception {
         InstanceQuery query = new InstanceQuery();
         query.setDatabaseURL("jdbc:mysql://localhost:3306/projeto_soo");
         query.setUsername("maicondallagnol");
         query.setPassword("17051998");
-        query.setQuery("select frase.frase, sentimento.nome from analise inner join frase on " +
+        query.setQuery("select frase.texto, sentimento.nome from analise inner join frase on " +
                 "analise.id_frase=frase.id inner join sentimento on analise.id_sentimento=sentimento.id where correto=1");
 
         Instances data = query.retrieveInstances();
@@ -76,7 +76,7 @@ public class ML implements GraphQLMutationResolver {
 
     public ArrayList<Attribute> createAttributeList(SentimentoRepository sentimentsRepository)
     {
-        ArrayList<Attribute> attributeList = new ArrayList<Attribute>();
+        ArrayList<Attribute> attributeList = new ArrayList<>();
         List<Sentimento> sentimentos = sentimentsRepository.findAll();
         ArrayList<String> classVal = new ArrayList<>();
 

@@ -36,7 +36,7 @@ public class AnaliseMutation implements GraphQLMutationResolver {
     private final ML machineLearning = new ML();
 
 
-    public boolean makeAnalise(Integer id_frase, Integer id_usuario) throws Exception {
+    public Analise makeAnalise(Integer id_frase, Integer id_usuario) throws Exception {
         Frase frase = fraseRepository.findById(id_frase).orElseGet(null);
 
         Integer id_sentimento = machineLearning.make_classification(frase.getTexto(), sentimentoRepository);
@@ -44,7 +44,7 @@ public class AnaliseMutation implements GraphQLMutationResolver {
         return addAnalise(id_frase, id_sentimento, id_usuario, 0);
     }
 
-    public boolean addAnalise(Integer id_frase, Integer id_sentimento, Integer id_usuario, Integer correto) throws Exception {
+    public Analise addAnalise(Integer id_frase, Integer id_sentimento, Integer id_usuario, Integer correto) throws Exception {
         Analise analise = new Analise();
         analise.setFrase(fraseRepository.findById(id_frase).orElseGet(null));
         analise.setSentimento(sentimentoRepository.findById(id_sentimento).orElseGet(null));
@@ -54,11 +54,12 @@ public class AnaliseMutation implements GraphQLMutationResolver {
         analise.setCorreto(correto);
         analise.setNovo(1);
 
-        analiseRepository.saveAndFlush(analise);
+
+        Analise saved = analiseRepository.saveAndFlush(analise);
 
         updateClassifier();
 
-        return true;
+        return saved;
     }
 
     public Boolean updateCorreto(Integer id_analise, Integer correto)
