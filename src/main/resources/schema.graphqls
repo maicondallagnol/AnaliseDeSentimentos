@@ -19,7 +19,7 @@ type Mutation {
 
   addUsuario(nome: String!): Usuario!
 
-  addAnalise(id_frase: ID!, id_sentimento: ID!, id_usuario: ID!, correto: Int): Boolean
+  addAnalise(id_frase: ID!, id_sentimento: ID!, id_usuario: ID!, correto: Int): Analise
   makeAnalise(id_frase: ID!, id_usuario: ID!): Analise
   updateCorreto(id_analise: ID!, correto: Int): Boolean
 }
