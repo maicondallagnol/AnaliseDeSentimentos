@@ -26,24 +26,25 @@ function getSentimentos(){
 function ajudaAlgoritmo()
 {
     const text = document.getElementById("texto").value
-    saveFrase(text).then(data => {
-        addAnalise(data.data.addFrase.id, sentimentoIdSelected, 1, 1)
-    })
+    const id_frase = saveFrase(text)
+    
+    addAnalise(id_frase, sentimentoIdSelected, 1, 1)
 }
 
 function addAnalise(id_frase_entry, id_sentimento_entry, id_usuario_entry, correto_entry)
 {
     const mutation = `
-    mutation addAnalise($id_frase: ID!, $id_sentimento: ID!, $id_usuario: ID!, $correto: Int){
+    mutation addAnalise($id_frase: ID!, $id_sentimento: ID!, $id_usuario: ID!, $correto: Boolean){
         addAnalise(id_frase: $id_frase, id_sentimento: $id_sentimento, id_usuario: $id_usuario, correto: $correto)
         {
             id
         }
     }
     `
+
     const variaveis = {id_frase: id_frase_entry, id_sentimento: id_sentimento_entry, id_usuario: id_usuario_entry, correto: correto_entry}
 
-    queryFetch(mutation, variaveis)
+    return queryFetch(mutation, variaveis)
 }
 
 function saveFrase(texto_entry)
@@ -58,7 +59,9 @@ function saveFrase(texto_entry)
     `
     const variaveis = {texto: texto_entry}
 
-    return queryFetch(mutation, variaveis)
+    return queryFetch(mutation, variaveis).then(data => {
+        return data.data.addFrase.id
+    })
 }
 
 sentimentosSelect.addEventListener('change', e => {

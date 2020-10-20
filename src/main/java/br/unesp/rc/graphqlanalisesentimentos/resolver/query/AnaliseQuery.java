@@ -35,4 +35,9 @@ public class AnaliseQuery implements GraphQLQueryResolver {
 
         return analiseRepository1.get(rnd_pos);
     }
+
+    public Analise getAnalise(Integer id_analise)
+    {
+        return analiseRepository.findById(id_analise).orElseGet(null);
+    }
 }

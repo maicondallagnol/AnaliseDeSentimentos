@@ -16,7 +16,7 @@ import java.util.Optional;
 @Repository
 public interface AnaliseRepository extends JpaRepository<Analise, Integer> {
 
-    int countAllByNovoAndCorreto(int novo, int correto);
+    int countAllByNovoAndCorreto(boolean novo, boolean correto);
 
     @Transactional
     @Modifying

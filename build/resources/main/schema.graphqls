@@ -7,7 +7,11 @@ type Query {
 
   getAnalises(id_usuario: ID!): [Analise]
 
+  getAnalise(id_analise: ID!): Analise
+
   getRandomAnalise(id_sentimento: ID!): Analise
+
+  autenticarLogin(nomeUsuario: String!, senha: String!): Login!
 }
 
 type Mutation {
@@ -17,17 +21,25 @@ type Mutation {
   addSentimento(nome: String!, emoticon: String!, descricao: String!): Boolean
   deleteSentimento(id: ID!): Boolean
 
-  addUsuario(nome: String!): Usuario!
+  addUsuario(nome: String!, sobrenome: String!): Usuario!
 
-  addAnalise(id_frase: ID!, id_sentimento: ID!, id_usuario: ID!, correto: Int): Boolean
+  addAnalise(id_frase: ID!, id_sentimento: ID!, id_usuario: ID!, correto: Boolean): Analise
   makeAnalise(id_frase: ID!, id_usuario: ID!): Analise
-  updateCorreto(id_analise: ID!, correto: Int): Boolean
+  updateCorreto(id_analise: ID!, correto: Boolean!): Boolean
+
+  addLogin(nomeUsuario: String!, senha: String!, id_usuario: ID!): Login!
+
+  addContato(email: String!, celular: String!, id_usuario: ID!): Contato!
+
+  addEndereco(logradouro: String!, numero: String!, complemento: String, bairro: String!,
+                cidade: String!, cep: String!, id_usuario: ID!): Endereco!
 }
 
 type Frase {
  id: ID
  texto: String!
 }
+
 
 type Sentimento {
   id: ID
@@ -39,14 +51,39 @@ type Sentimento {
 type Usuario {
   id: ID
   nome: String!
+  sobrenome: String!
 }
 
 type Analise {
-    id: ID
-    frase: Frase!
-    sentimento: Sentimento!
-    usuario: Usuario!
-    novo: Int
-    correto: Int
+  id: ID
+  frase: Frase!
+  sentimento: Sentimento!
+  usuario: Usuario!
+  novo: Boolean
+  correto: Boolean
+  dataAnalise: String
 }
 
+type Login {
+  id: ID
+  nomeUsuario: String!
+  senha: String!
+  usuario: Usuario!
+}
+
+type Contato {
+  id: ID
+  email: String!
+  celular: String!
+  usuario: Usuario!
+}
+
+type Endereco {
+  id: ID
+  logradouro: String!
+  numero: String!
+  complemento: String
+  bairro: String!
+  cidade: String!
+  cep: String!
+}

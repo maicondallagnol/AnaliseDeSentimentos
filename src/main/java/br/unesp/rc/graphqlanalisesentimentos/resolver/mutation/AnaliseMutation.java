@@ -7,16 +7,11 @@ import br.unesp.rc.graphqlanalisesentimentos.repository.SentimentoRepository;
 import br.unesp.rc.graphqlanalisesentimentos.repository.UsuarioRepository;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Component;
-import weka.classifiers.bayes.NaiveBayes;
-import weka.core.Attribute;
-import weka.core.Instances;
-import weka.core.SerializationHelper;
-import weka.experiment.InstanceQuery;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 @Component
 public class AnaliseMutation implements GraphQLMutationResolver {
@@ -41,18 +36,20 @@ public class AnaliseMutation implements GraphQLMutationResolver {
 
         Integer id_sentimento = machineLearning.make_classification(frase.getTexto(), sentimentoRepository);
 
-        return addAnalise(id_frase, id_sentimento, id_usuario, 0);
+        return addAnalise(id_frase, id_sentimento, id_usuario, false);
     }
 
-    public Analise addAnalise(Integer id_frase, Integer id_sentimento, Integer id_usuario, Integer correto) throws Exception {
+    public Analise addAnalise(Integer id_frase, Integer id_sentimento, Integer id_usuario, Boolean correto) throws Exception {
         Analise analise = new Analise();
         analise.setFrase(fraseRepository.findById(id_frase).orElseGet(null));
         analise.setSentimento(sentimentoRepository.findById(id_sentimento).orElseGet(null));
         analise.setUsuario(usuarioRepository.findById(id_usuario).orElseGet(null));
-
-//        analise.setData(ldt);
         analise.setCorreto(correto);
-        analise.setNovo(1);
+        analise.setNovo(true);
+
+        LocalDateTime horarioAtual = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        analise.setDataAnalise(horarioAtual.format(formatter));
 
 
         Analise saved = analiseRepository.saveAndFlush(analise);
@@ -62,7 +59,7 @@ public class AnaliseMutation implements GraphQLMutationResolver {
         return saved;
     }
 
-    public Boolean updateCorreto(Integer id_analise, Integer correto)
+    public Boolean updateCorreto(Integer id_analise, Boolean correto)
     {
         Analise analise;
         analise = analiseRepository.findById(id_analise).orElse(null);
@@ -74,7 +71,7 @@ public class AnaliseMutation implements GraphQLMutationResolver {
     }
 
     private void updateClassifier() throws Exception {
-        int num_novos = analiseRepository.countAllByNovoAndCorreto(1,1);
+        int num_novos = analiseRepository.countAllByNovoAndCorreto(true,true);
         if(num_novos >= 25) {
             machineLearning.makeNewModel();
             updateAllAnalise();

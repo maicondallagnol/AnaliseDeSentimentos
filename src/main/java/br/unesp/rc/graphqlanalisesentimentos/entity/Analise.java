@@ -29,8 +29,13 @@ public class Analise {
     @JoinColumn(name = "id_sentimento")
     private Sentimento sentimento;
 
-//    private Date data;
-    private int correto;
-    private int novo;
+    @Column(name = "correto")
+    private boolean correto;
+
+    @Column(name = "novo")
+    private boolean novo;
+
+    @Column(name = "data_analise")
+    private String dataAnalise;
 
 }
