@@ -24,8 +24,4 @@ public class Contato {
     @Column(name = "celular")
     private String celular;
 
-    @OneToOne
-    @JoinColumn(name = "id_usuario",nullable = false, updatable = false)
-    private Usuario usuario;
-
 }

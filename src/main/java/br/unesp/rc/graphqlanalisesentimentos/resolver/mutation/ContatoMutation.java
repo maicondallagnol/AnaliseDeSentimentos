@@ -18,13 +18,11 @@ public class ContatoMutation implements GraphQLMutationResolver{
     @Autowired
     private ContatoRepository contatoRepository;
 
-    public Contato addContato(String email, String celular, Integer id_usuario) {
-        Usuario usuario = usuarioRepository.findById(id_usuario).orElseGet(null);
+    public Contato addContato(String email, String celular) {
 
         Contato contato = new Contato();
         contato.setEmail(email);
         contato.setCelular(celular);
-        contato.setUsuario(usuario);
 
         return contatoRepository.saveAndFlush(contato);
     }

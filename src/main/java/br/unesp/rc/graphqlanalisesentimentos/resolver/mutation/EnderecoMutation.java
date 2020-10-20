@@ -19,9 +19,8 @@ public class EnderecoMutation implements GraphQLMutationResolver{
     private EnderecoRepository enderecoRepository;
 
     public Endereco addEndereco(String logradouro, String numero, String complemento,
-                                String bairro, String cidade, String cep, Integer id_usuario) {
+                                String bairro, String cidade, String cep) {
 
-        Usuario usuario = usuarioRepository.findById(id_usuario).orElseGet(null);
 
         Endereco endereco = new Endereco();
         endereco.setLogradouro(logradouro);
@@ -30,7 +29,6 @@ public class EnderecoMutation implements GraphQLMutationResolver{
         endereco.setBairro(bairro);
         endereco.setCidade(cidade);
         endereco.setCep(cep);
-        endereco.setUsuario(usuario);
 
         return enderecoRepository.saveAndFlush(endereco);
     }

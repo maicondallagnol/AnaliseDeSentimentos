@@ -11,7 +11,11 @@ type Query {
 
   getRandomAnalise(id_sentimento: ID!): Analise
 
-  autenticarLogin(nomeUsuario: String!, senha: String!): Login!
+  autenticarLogin(username: String!, senha: String!): Login!
+
+  existsUsername(username: String!): Boolean
+
+  getUsuarioLogin(id_login: ID!): Usuario
 }
 
 type Mutation {
@@ -21,18 +25,14 @@ type Mutation {
   addSentimento(nome: String!, emoticon: String!, descricao: String!): Boolean
   deleteSentimento(id: ID!): Boolean
 
-  addUsuario(nome: String!, sobrenome: String!): Usuario!
-
   addAnalise(id_frase: ID!, id_sentimento: ID!, id_usuario: ID!, correto: Boolean): Analise
   makeAnalise(id_frase: ID!, id_usuario: ID!): Analise
   updateCorreto(id_analise: ID!, correto: Boolean!): Boolean
 
-  addLogin(nomeUsuario: String!, senha: String!, id_usuario: ID!): Login!
-
-  addContato(email: String!, celular: String!, id_usuario: ID!): Contato!
-
-  addEndereco(logradouro: String!, numero: String!, complemento: String, bairro: String!,
-                cidade: String!, cep: String!, id_usuario: ID!): Endereco!
+  addUsuario(nome: String!, sobrenome: String!, data_nasc: String!, sexo: String!, id_contato: ID!, id_endereco: ID!, id_login: ID!): Usuario!
+  addLogin(nomeUsuario: String!, senha: String!): Login!
+  addContato(email: String!, celular: String!): Contato!
+  addEndereco(logradouro: String!, numero: String!, complemento: String, bairro: String!, cidade: String!, cep: String!): Endereco!
 }
 
 type Frase {
@@ -52,6 +52,11 @@ type Usuario {
   id: ID
   nome: String!
   sobrenome: String!
+  data_nasc: String
+  sexo: String
+  contato: Contato!
+  endereco: Endereco!
+  login: Login!
 }
 
 type Analise {
@@ -66,16 +71,14 @@ type Analise {
 
 type Login {
   id: ID
-  nomeUsuario: String!
+  username: String!
   senha: String!
-  usuario: Usuario!
 }
 
 type Contato {
   id: ID
   email: String!
   celular: String!
-  usuario: Usuario!
 }
 
 type Endereco {

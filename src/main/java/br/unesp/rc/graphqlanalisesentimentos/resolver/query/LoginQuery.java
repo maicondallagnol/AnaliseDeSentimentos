@@ -13,7 +13,13 @@ public class LoginQuery implements GraphQLQueryResolver{
     @Autowired
     private LoginRepository loginRepository;
 
-    public Login autenticarLogin(String nomeUsuario, String senha){
-        return loginRepository.findLoginByNomeUsuarioAndSenha(nomeUsuario, senha);
+    public Login autenticarLogin(String username, String senha){
+        return loginRepository.findLoginByUsernameAndSenha(username, senha);
+
+    }
+
+    public boolean existsUsername(String username)
+    {
+        return loginRepository.existsLoginByUsername(username);
     }
 }

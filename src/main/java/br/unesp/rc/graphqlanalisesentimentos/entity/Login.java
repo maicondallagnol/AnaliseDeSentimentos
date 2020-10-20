@@ -18,14 +18,12 @@ public class Login {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nome_usuario")
-    private String nomeUsuario;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "senha")
     private String senha;
 
-    @OneToOne
-    @JoinColumn(name = "id_usuario",nullable = false, updatable = false)
-    private Usuario usuario;
-
+    @Column(name="ultimo_acesso")
+    private String ultimo_acesso;
 }

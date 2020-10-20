@@ -18,14 +18,13 @@ public class LoginMutation implements GraphQLMutationResolver{
     @Autowired
     private LoginRepository loginRepository;
 
-    public Login addLogin(String nomeUsuario, String senha, Integer id_usuario) {
-        Usuario usuario = usuarioRepository.findById(id_usuario).orElseGet(null);
+    public Login addLogin(String username, String senha) {
 
         Login login = new Login();
-        login.setNomeUsuario(nomeUsuario);
+        login.setUsername(username);
         login.setSenha(senha);
-        login.setUsuario(usuario);
 
         return loginRepository.saveAndFlush(login);
     }
+
 }

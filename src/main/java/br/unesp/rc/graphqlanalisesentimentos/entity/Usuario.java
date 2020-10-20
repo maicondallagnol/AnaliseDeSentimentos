@@ -4,15 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Builder
@@ -33,5 +29,21 @@ public class Usuario implements Serializable{
 	@Column(name = "sobrenome")
 	private String sobrenome;
 
+	@Column(name = "data_nasc")
+	private String data_nasc;
 
+	@Column(name = "sexo")
+	private String sexo;
+
+	@OneToOne
+	@JoinColumn(name = "contato",nullable = false)
+	private Contato contato;
+
+	@OneToOne
+	@JoinColumn(name = "login",nullable = false, updatable = false)
+	private Login login;
+
+	@OneToOne
+	@JoinColumn(name = "endereco",nullable = false)
+	private Endereco endereco;
 }
