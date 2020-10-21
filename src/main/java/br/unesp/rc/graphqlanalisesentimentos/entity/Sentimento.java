@@ -7,12 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Builder
@@ -28,8 +23,10 @@ public class Sentimento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private String emoticon;
 	private String descricao;
-        
+
+	@OneToOne
+	@JoinColumn(name = "id_imagem", nullable=true, insertable=true, updatable=true)
+	private Imagem imagem;
         
 }

@@ -36,14 +36,14 @@ public class Usuario implements Serializable{
 	private String sexo;
 
 	@OneToOne
-	@JoinColumn(name = "contato",nullable = false)
+	@JoinColumn(name = "id_contato", nullable=true, insertable=true, updatable=true)
 	private Contato contato;
 
 	@OneToOne
-	@JoinColumn(name = "login",nullable = false, updatable = false)
+	@JoinColumn(name = "id_login", nullable=true, insertable=true, updatable=true)
 	private Login login;
 
 	@OneToOne
-	@JoinColumn(name = "endereco",nullable = false)
+	@JoinColumn(name = "id_endereco", nullable=true, insertable=true, updatable=true)
 	private Endereco endereco;
 }

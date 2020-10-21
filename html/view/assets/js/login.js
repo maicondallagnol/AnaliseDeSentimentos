@@ -10,10 +10,7 @@ function autenticarLogin()
     query autenticarLogin($nomeUsuario: String!, $senha: String!){
         autenticarLogin(nomeUsuario: $nomeUsuario, senha: $senha)
         {
-            usuario
-            {
-                id
-            }
+           id
         }
     }
     `
@@ -21,11 +18,30 @@ function autenticarLogin()
 
     queryFetch(query, variaveis).then(data => {
         localStorage.clear()
-        localStorage.id = data.data.autenticarLogin.usuario.id
+        localStorage.id = data.data.autenticarLogin.id
         document.location.href = "index.html"
     })
 }
 
+function getUsuarioLogin(id_login_entry)
+{
+
+    const query = `
+    query getUsuarioLogin($id_login: ID!){
+        getUsuarioLogin(id_login: $id_login)
+        {
+           id
+        }
+    }
+    `
+    const variaveis = {$id_login: id_login_entry}
+
+    queryFetch(query, variaveis).then(data => {
+        localStorage.clear()
+        localStorage.id = data.data.autenticarLogin.usuario.id
+        document.location.href = "login.html"
+    })
+}
 
 function queryFetch(query_entry, variables_entry)
 {

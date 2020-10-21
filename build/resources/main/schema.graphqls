@@ -16,13 +16,17 @@ type Query {
   existsUsername(username: String!): Boolean
 
   getUsuarioLogin(id_login: ID!): Usuario
+
+  getUsuario(id_usuario: ID!): Usuario
+
+  getImages: [Imagem]
 }
 
 type Mutation {
   addFrase(frase: String!): Frase!
   deleteFrase(id: ID!): Boolean!
 
-  addSentimento(nome: String!, emoticon: String!, descricao: String!): Boolean
+  addSentimento(nome: String!, descricao: String!, id_imagem: ID!): Boolean
   deleteSentimento(id: ID!): Boolean
 
   addAnalise(id_frase: ID!, id_sentimento: ID!, id_usuario: ID!, correto: Boolean): Analise
@@ -32,7 +36,7 @@ type Mutation {
   addUsuario(nome: String!, sobrenome: String!, data_nasc: String!, sexo: String!, id_contato: ID!, id_endereco: ID!, id_login: ID!): Usuario!
   addLogin(nomeUsuario: String!, senha: String!): Login!
   addContato(email: String!, celular: String!): Contato!
-  addEndereco(logradouro: String!, numero: String!, complemento: String, bairro: String!, cidade: String!, cep: String!): Endereco!
+  addEndereco(rua: String, numero: String, cep: String, cidade: String, estado: String): Endereco!
 }
 
 type Frase {
@@ -44,8 +48,8 @@ type Frase {
 type Sentimento {
   id: ID
   nome: String!
-  emoticon: String!
   descricao: String!
+  imagem: Imagem!
 }
 
 type Usuario {
@@ -83,10 +87,15 @@ type Contato {
 
 type Endereco {
   id: ID
-  logradouro: String!
+  rua: String
   numero: String!
-  complemento: String
-  bairro: String!
-  cidade: String!
   cep: String!
+  cidade: String!
+  estado: String!
+}
+
+type Imagem{
+  id: ID
+  caminho: String!
+  nome: String!
 }

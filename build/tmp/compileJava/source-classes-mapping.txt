@@ -1,3 +1,6 @@
+br/unesp/rc/graphqlanalisesentimentos/entity/Imagem.java
+ br.unesp.rc.graphqlanalisesentimentos.entity.Imagem
+ br.unesp.rc.graphqlanalisesentimentos.entity.Imagem$ImagemBuilder
 br/unesp/rc/graphqlanalisesentimentos/entity/Contato.java
  br.unesp.rc.graphqlanalisesentimentos.entity.Contato
  br.unesp.rc.graphqlanalisesentimentos.entity.Contato$ContatoBuilder
@@ -39,6 +42,10 @@ br/unesp/rc/graphqlanalisesentimentos/entity/Frase.java
  br.unesp.rc.graphqlanalisesentimentos.entity.Frase$FraseBuilder
 br/unesp/rc/graphqlanalisesentimentos/repository/EnderecoRepository.java
  br.unesp.rc.graphqlanalisesentimentos.repository.EnderecoRepository
+br/unesp/rc/graphqlanalisesentimentos/repository/ImagemRepository.java
+ br.unesp.rc.graphqlanalisesentimentos.repository.ImagemRepository
+br/unesp/rc/graphqlanalisesentimentos/resolver/query/ImagemQuery.java
+ br.unesp.rc.graphqlanalisesentimentos.resolver.query.ImagemQuery
 br/unesp/rc/graphqlanalisesentimentos/GraphqlAnaliseSentimentosApplication.java
  br.unesp.rc.graphqlanalisesentimentos.GraphqlAnaliseSentimentosApplication
 br/unesp/rc/graphqlanalisesentimentos/entity/Usuario.java

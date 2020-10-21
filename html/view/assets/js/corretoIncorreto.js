@@ -70,7 +70,10 @@ function getEmoticonAnalise()
             sentimento
             {
                 nome
-                emoticon
+                imagem
+                {
+                    caminho
+                }
             }
             
         }
@@ -88,8 +91,7 @@ function getEmoticonAnalise()
         p.style.fontSize = "35px"
 
         const img = document.createElement("img")
-        console.log(data.data.getAnalise.sentimento.emoticon)
-        img.src = data.data.getAnalise.sentimento.emoticon
+        img.src = data.data.getAnalise.sentimento.imagem.caminho
         img.className = "rounded-circle mb-3 mt-4"
         img.width="160"
         img.height="160"

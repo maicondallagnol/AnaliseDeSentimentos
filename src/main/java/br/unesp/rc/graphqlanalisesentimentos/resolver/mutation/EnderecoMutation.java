@@ -18,15 +18,14 @@ public class EnderecoMutation implements GraphQLMutationResolver{
     @Autowired
     private EnderecoRepository enderecoRepository;
 
-    public Endereco addEndereco(String logradouro, String numero, String complemento,
-                                String bairro, String cidade, String cep) {
+    public Endereco addEndereco(String rua, String numero, String cep,
+                                String cidade, String estado) {
 
 
         Endereco endereco = new Endereco();
-        endereco.setLogradouro(logradouro);
+        endereco.setRua(rua);
         endereco.setNumero(numero);
-        endereco.setComplemento(complemento);
-        endereco.setBairro(bairro);
+        endereco.setEstado(estado);
         endereco.setCidade(cidade);
         endereco.setCep(cep);
 

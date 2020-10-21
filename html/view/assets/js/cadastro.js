@@ -1,38 +1,28 @@
-function addContato(email_entry, celular_entry, id_usuario_entry)
-{
-    const mutation = `
-    mutation addContato($email: String!, $celular: String!, $id_usuario: ID!){
-        addContato(email: $email, celular: $celular, id_usuario: $id_usuario)
-        {
-            id
-            email
-            celular
-            usuario
-            {
-                id
-                nome
-                sobrenome
-            }
-        }
-    }
-    `
-    const variaveis = {
-        email: email_entry, 
-        celular: password_entry, 
-        id_usuario: id_usuario_entry}
-
-    return queryFetch(mutation, variaveis)
-}
-
 function startCadastro()
 {
     nome_entry = document.getElementById('nome').value
     sobrenome_entry = document.getElementById('sobrenome').value
-    email_entry = document.getElementById('email').value
-    celular_entry = document.getElementById('celular').value
-    username_entry = document.getElementById('username').value
-    data = {'nome': nome_entry, 'sobrenome': sobrenome_entry, 'email': email_entry,
-            'celular':celular_entry, 'username':usuario_entry, }
+    sexo = document.getElementById('sexo').value
+    data_nasc = document.getElementById('data_nasc').value
+
+    email = document.getElementById('email').value
+    celular = document.getElementById('celular').value
+
+    username = document.getElementById('username').value
+    senha = document.getElementById('senha').value
+
+    rua = document.getElementById('rua').value
+    numero = document.getElementById('numero').value
+    cidade = document.getElementById('cidade').value
+    estado = document.getElementById('estado').value
+    cep = document.getElementById('cep').value
+
+    data = {'nome': nome_entry, 'sobrenome': sobrenome_entry, 'sexo':sexo, 'data_nasc': data_nasc ,
+            'email': email,'celular':celular,
+            'username':username, 'senha':senha,
+            'rua': rua, 'numero':numero, 'cidade':cidade, 'estado': estado, 'cep': cep}
+
+
     checkLogin(data)
 
 }
@@ -48,67 +38,101 @@ function checkLogin(data)
     variaveis = {username: data['username']}
 
     queryFetch(query, variaveis).then(result =>{
-        if(data.data.existsLogin)
+        if(result.data.existsLogin)
         {
             setUsuarioExistente()
         }
         else
         {
-            addUsuario(data['nome'],data['senha'],data['email']).then(result =>{
-                addLogin(data['username'] )
-            })
-            
+
+            setUsuarioInexistente(data)
         }
     });
 }
 
 function setUsuarioExistente()
 {
-    // const email = document.getElementById('email')
-    const usuario = document.getElementById('usuario')
-
-    // email.value = ""
     usuario.value = ""
-
-
     usuario.placeholder = "Username já existente!"
-    // email.placeholder = "Email/Usuário já existente!"
 }
 
-function addUsuario(userName_entry, password_entry, email_entry)
+function addUsuario(data, id_login, id_contato, id_endereco)
 {
     const mutation = `
-    mutation addUsuario($nomeUsuario: String!, $senha: String!, $email: String!){
-        addLogin(nomeUsuario: $nomeUsuario, senha: $senha, email: $email)
+    mutation addUsuario($nome: String!, $sobrenome: String!, $sexo: String!, $data_nasc: String!, $id_contato: ID!, $id_login: ID!, $id_endereco: ID!){
+        addUsuario(nome: $nome, sobrenome: $sobrenome, sexo: $sexo, data_nasc: $data_nasc, id_contato: $id_contato, id_login: $id_login, id_endereco: $id_endereco)
         {
             id
         }
     }
     `
-    const variaveis = {nomeUsuario: userName_entry, senha: password_entry, email: email_entry}
+    const variaveis = {nome: data['nome'], sobrenome: data['sobrenome'],
+                        sexo: data['sexo'], data_nasc:data['data_nasc'],
+                        id_contato: id_contato, id_login: id_login, id_endereco: id_endereco}
 
     return queryFetch(mutation, variaveis)
 }
 
-function addLogin(userName_entry, password_entry, id_usuario_entry)
+function setUsuarioInexistente(data)
+{
+    addLogin(data).then(result => {
+        addContato(data).then( result2 => {
+            addEndereco(data).then( result3 => {
+                const id_login = result.data.addLogin.id
+                const id_contato = result2.data.addContato.id
+                const id_endereco = result3.data.addEndereco.id
+                addUsuario(data, id_login, id_contato, id_endereco).then(result4 =>{
+                    localStorage.id = result4.data.addUsuario.id
+                    document.location.href = "index.html"
+                })
+            })
+        })
+    })
+}
+
+
+function addLogin(data)
 {
     const mutation = `
-    mutation addLogin($nomeUsuario: String!, $senha: String!, $id_usuario: ID!){
-        addLogin(nomeUsuario: $nomeUsuario, senha: $senha, id_usuario: $id_usuario)
+    mutation addLogin($nomeUsuario: String!, $senha: String!){
+        addLogin(nomeUsuario: $nomeUsuario, senha: $senha)
         {
             id
-            nomeUsuario
-            senha
-            usuario
-            {
-                id
-                nome
-                sobrenome
-            }
         }
     }
     `
-    const variaveis = {nomeUsuario: userName_entry, senha: password_entry, id_usuario: id_usuario_entry}
+    const variaveis = {nomeUsuario: data['username'], senha: data['senha']}
+
+    return queryFetch(mutation, variaveis)
+}
+
+function addContato(data)
+{
+    const mutation = `
+    mutation addContato($celular: String!, $email: String!){
+        addContato(celular: $celular, email: $email)
+        {
+            id
+        }
+    }
+    `
+    const variaveis = {celular: data['celular'], email: data['email']}
+
+    return queryFetch(mutation, variaveis)
+}
+
+
+function addEndereco(data)
+{
+    const mutation = `
+    mutation addEndereco($rua: String, $numero: String, $cep: String, $cidade: String, $estado: String){
+        addEndereco(rua: $rua, numero: $numero, cep: $cep, cidade: $cidade, estado: $estado)
+        {
+            id
+        }
+    }
+    `
+    const variaveis = {rua:data['rua'], numero: data['numero'], cep: data['cep'], cidade:data['cidade'], estado: data['estado']}
 
     return queryFetch(mutation, variaveis)
 }

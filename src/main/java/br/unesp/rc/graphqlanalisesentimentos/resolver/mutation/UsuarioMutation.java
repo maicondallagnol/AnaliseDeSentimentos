@@ -36,7 +36,6 @@ public class UsuarioMutation implements GraphQLMutationResolver {
         usuario.setLogin(loginRepository.findById(id_login).orElseGet(null));
         usuario.setEndereco(enderecoRepository.findById(id_endereco).orElseGet(null));
 
-
         return usuarioRepository.saveAndFlush(usuario);
     }
 

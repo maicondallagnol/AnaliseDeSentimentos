@@ -4,7 +4,6 @@ function fazAnalise()
     saveFrase(text).then(data => {
         makeAnalise(data.data.addFrase.id, localStorage.id).then(data =>
             {
-                // console.log(data.data.makeAnalise.id)
                 document.location.href = "correto-incorreto.html?idanalise=" + encodeURIComponent(data.data.makeAnalise.id);
             })
     })
@@ -17,10 +16,6 @@ function makeAnalise(id_frase_entry, id_usuario_entry)
         makeAnalise(id_frase: $id_frase, id_usuario: $id_usuario)
         {
             id
-            sentimento
-            {
-                emoticon
-            }
         }
     }
     `

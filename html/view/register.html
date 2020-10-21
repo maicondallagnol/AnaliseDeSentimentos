@@ -29,16 +29,42 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nome" placeholder="Nome" name="first_name"></div>
                                     <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="sobrenome" placeholder="Sobrenome" name="last_name"></div>
                                 </div>
-                                <div class="form-group"><input class="form-control form-control-user" type="email" id="email" aria-describedby="emailHelp" placeholder="Email" name="email"></div>
+
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="user" id="username"  placeholder="Username" name="username"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="tel" id="celular" placeholder="Telefone (XX)-X-XXXX-XXXX" name="telefone" pattern="([0-9]{2})-[0-9]-[0-9]{4}-[0-9]{4}"></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="sexo" placeholder="Sexo" name="sexo"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="data_nasc" placeholder="Data Nascimento" name="data_nasc"></div>
                                 </div>
                                 
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="user" id="username"  placeholder="Username" name="username"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="tel" id="celular" placeholder="Telefone (XX)-X-XXXX-XXXX" name="telefone" ></div>
+                                </div>
+
+                                <div class="form-group"><input class="form-control form-control-user" type="email" id="email" aria-describedby="emailHelp" placeholder="Email" name="email"></div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="senha" placeholder="Senha" name="Password"></div>
                                     <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Confirme a Senha" name="password_repeat"></div>
-                                </div><button class="btn btn-primary btn-block text-white btn-user" onclik="startCadastro()" type="submit">Registrar Conta</button>
+                                </div>
+
+                                <br>
+                                
+                                <div class="form-group row">
+                                    <div class="col-sm-9 mb-3 mb-sm-0"><input class="form-control form-control-user" id="rua"  placeholder="Rua" name="rua"></div>
+                                    <div class="col-sm-3"><input class="form-control form-control-user" id="numero" placeholder="Num" name="numero" ></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4 mb-3 mb-sm-0"><input class="form-control form-control-user" id="cep"  placeholder="CEP" name="rua"></div>
+                                    <div class="col-sm-4"><input class="form-control form-control-user" id="cidade" placeholder="Cidade" name="cidade" ></div>
+                                    <div class="col-sm-4"><input class="form-control form-control-user" id="estado" placeholder="Estado" name="estado" ></div>
+                                </div>
+
+                                <!-- <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="user" id="username"  placeholder="Username" name="username"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="tel" id="celular" placeholder="Telefone (XX)-X-XXXX-XXXX" name="telefone" pattern="([0-9]{2})-[0-9]-[0-9]{4}-[0-9]{4}"></div>
+                                </div> -->
+                                
+                                <button onclick="startCadastro()" class="btn btn-primary btn-block text-white btn-user">Registrar Conta</button>
                                 <hr><a class="btn btn-primary btn-block text-white btn-google btn-user" role="button"><i class="fab fa-google"></i>&nbsp; Registrar com Google</a><a class="btn btn-primary btn-block text-white btn-facebook btn-user" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Registrar com Facebook</a>
                                 <hr>
                             </form>

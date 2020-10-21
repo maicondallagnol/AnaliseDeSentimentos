@@ -2,8 +2,6 @@ package br.unesp.rc.graphqlanalisesentimentos.entity;
 
 import br.unesp.rc.graphqlanalisesentimentos.repository.SentimentoRepository;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
-import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.core.Attribute;
@@ -11,13 +9,11 @@ import weka.core.DenseInstance;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 import weka.experiment.InstanceQuery;
-import br.unesp.rc.graphqlanalisesentimentos.resolver.query.SentimentoQuery;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ML implements GraphQLMutationResolver {
+public class ML {
 
     String model = "/home/maicondallagnol/Documentos/Faculdade/2020/SOO/AnaliseDeSentimentos/src/main/resources/models/classificador.model";
 

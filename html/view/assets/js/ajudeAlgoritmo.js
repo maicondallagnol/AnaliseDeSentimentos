@@ -1,3 +1,5 @@
+window.onload = getSentimentos()
+
 const sentimentosSelect = document.getElementById('sentimentos-select')
 
 var sentimentoIdSelected = null
@@ -27,7 +29,7 @@ function ajudaAlgoritmo()
 {
     const text = document.getElementById("texto").value
     saveFrase(text).then(data => {
-        addAnalise(data.data.addFrase.id, sentimentoIdSelected, 1, 1)
+        addAnalise(data.data.addFrase.id, sentimentoIdSelected, localStorage.id, 1)
     })
 }
 
@@ -53,7 +55,6 @@ function addAnalise(id_frase_entry, id_sentimento_entry, id_usuario_entry, corre
             obrigado_msg.appendChild(node)
 
             obrigado.appendChild(obrigado_msg)
-            setTimeout(document.location.href="index.html", 1580);
         })
 }
 

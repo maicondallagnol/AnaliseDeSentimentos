@@ -1,11 +1,11 @@
-function addEndereco(logradouro_entry, numero_entry, complemento_entry, bairro_entry, cidade_entry, cep_entry, usuario_id_entry)
+function addEndereco(logradouro_entry, numero_entry, complemento_entry, bairro_entry, cidade_entry, cep_entry)
 {
     const mutation = `
     mutation addEndereco($logradouro: String!, $numero: String!, $complemento: String, $bairro: String!,
-                $cidade: String!, $cep: String!, $usuario_id: ID!){
+                $cidade: String!, $cep: String!){
                 
         addEndereco(logradouro: $logradouro, numero: $numero, complemento: $complemento, bairro: $bairro, 
-            cidade: $cidade, cep: $cep, id_usuario: $id_usuario)
+            cidade: $cidade, cep: $cep)
         {
             id
             logradouro
@@ -14,16 +14,10 @@ function addEndereco(logradouro_entry, numero_entry, complemento_entry, bairro_e
             bairro
             cidade
             cep
-            usuario
-            {
-                id
-                nome
-                sobrenome
-            }
         }
     }
     `
-    const variaveis = {logradouro: logradouro_entry, numero: numero_entry, complemento: complemento_entry, bairro: bairro_entry, cidade: cidade_entry, cep: cep_entry, udu}
+    const variaveis = {logradouro: logradouro_entry, numero: numero_entry, complemento: complemento_entry, bairro: bairro_entry, cidade: cidade_entry, cep: cep_entry}
 
     return queryFetch(mutation, variaveis)
 }

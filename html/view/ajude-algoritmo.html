@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <script src="assets/js/ajudeAlgoritmo.js" defer></script>
+    <script src='assets/js/headbar.js' defer></script>
 </head>
 
 <body id="page-top" onload="getSentimentos()">
@@ -22,11 +23,14 @@
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home"></i><span>Inicio</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="perfil.html"><i class="fas fa-user"></i><span>Perfil</span></a><a class="nav-link" href="analisar.html"><i class="fas fa-puzzle-piece"></i><span>Analisar</span></a><a class="nav-link" href="analises.html"><i class="fas fa-archive"></i><span>Ver Análises</span></a></li>
-                    <li
-                        class="nav-item"><a class="nav-link" href="gerar.html"><i class="far fa-hourglass"></i><span>Gerar</span></a><a class="nav-link active" href="ajude-algoritmo.html"><i class="fas fa-hands-helping"></i><span>Ajude o Algoritmo</span></a></li>
-                        <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
-                        <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="perfil.html"><i class="fas fa-user"></i><span>Perfil</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="analisar.html"><i class="fas fa-puzzle-piece"></i><span>Analisar</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="analises.html"><i class="fas fa-archive"></i><span>Ver Análises</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="gerar.html"><i class="far fa-hourglass"></i><span>Gerar</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="ajude-algoritmo.html"><i class="fas fa-hands-helping"></i><span>Ajude o Algoritmo</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastrar-sentimento.html"><i class="fas fa-plus-square"></i><span>Cadastrar Sentimento</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -44,7 +48,7 @@
                            
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Joana Silva</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small" id="nome_head"></span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
                                     <div
                                         class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="perfil.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Perfil</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Configurações</a>
                                         <a

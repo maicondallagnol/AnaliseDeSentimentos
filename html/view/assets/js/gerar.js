@@ -1,3 +1,5 @@
+window.onload = getSentimentos()
+
 const histSelection = document.getElementById('sent-rows')
 
 function getSentimentos()
@@ -8,7 +10,10 @@ function getSentimentos()
         {
             id
             nome
-            emoticon
+            imagem
+            {
+                caminho
+            }
         }
     }
     `
@@ -35,7 +40,7 @@ function getSentimentos()
                 // p.appendChild(node)
 
                 var img = document.createElement("img")
-                img.src = sentimento.emoticon;
+                img.src = sentimento.imagem.caminho;
                 img.className = "rounded-circle mb-3 mt-4"
                 img.width = "160"
                 img.height = "160"
@@ -45,6 +50,7 @@ function getSentimentos()
                     geraAnalise(e.target.value)
                 })
                 
+                console.log(img)
                 div3.appendChild(img)
                 div3.appendChild(p)
                 div2.appendChild(div3)
@@ -81,9 +87,21 @@ function geraAnalise(id_sentimento_entry)
     variaveis = {id_sentimento: id_sentimento_entry}
 
     queryFetch(query, variaveis).then(data => {
-        addAnalise(data.data.getRandomAnalise.frase.id, 
-            data.data.getRandomAnalise.sentimento.id, localStorage.id, 0)
-        
+        if(!data.data.getRandomAnalise)
+        {
+            const sent = document.getElementById("erro")
+            const obrigado_msg = document.createElement("h3")
+            let node = document.createTextNode("Sem frases com este sentimento - Cadastre ao menos uma!")
+            obrigado_msg.appendChild(node)
+
+            sent.appendChild(obrigado_msg)
+            
+        }
+        else
+        {
+            addAnalise(data.data.getRandomAnalise.frase.id, 
+                data.data.getRandomAnalise.sentimento.id, localStorage.id, 0)
+        }
     })
 }
 

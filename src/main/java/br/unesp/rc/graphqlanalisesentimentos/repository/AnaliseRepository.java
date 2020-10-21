@@ -25,6 +25,9 @@ public interface AnaliseRepository extends JpaRepository<Analise, Integer> {
 
     List<Analise> findAllBySentimento(Sentimento sentimento);
 
+
+    boolean existsBySentimento(Sentimento sentimento);
+
     List<Analise> findByUsuario(Usuario usuario);
 
     @Transactional

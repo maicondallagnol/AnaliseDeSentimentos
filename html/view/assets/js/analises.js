@@ -1,8 +1,9 @@
+window.onload = getHist()
+
 const histSelection = document.getElementById('table-hist').getElementsByTagName('tbody')[0];
 
 function getHist()
 {
-
     const query = `
     query getAnalises($id_usuario: ID!){
         getAnalises(id_usuario: $id_usuario)
@@ -28,7 +29,7 @@ function getHist()
                 "<td>" + analise.frase.texto + "</td>"+
                 "<td>" + analise.sentimento.nome + "</td>"+
                 "<td>" + analise.dataAnalise + "</td>"
-            // console.log(analise.dataAnalise)
+            // console.log(analise.dataAnalise) 
             })
         })
 }
