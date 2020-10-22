@@ -69,7 +69,6 @@ public class ML {
         return sentimentoReposit.findIdByNome(classe);
     }
 
-
     public ArrayList<Attribute> createAttributeList(SentimentoRepository sentimentsRepository)
     {
         ArrayList<Attribute> attributeList = new ArrayList<>();
