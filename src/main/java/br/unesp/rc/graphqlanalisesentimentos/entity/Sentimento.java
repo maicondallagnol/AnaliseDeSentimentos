@@ -28,5 +28,8 @@ public class Sentimento implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "id_imagem", nullable=true, insertable=true, updatable=true)
 	private Imagem imagem;
+
+	@Column(name = "cor")
+	private String cor;
         
 }

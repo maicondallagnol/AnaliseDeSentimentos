@@ -9,6 +9,9 @@ import br.unesp.rc.graphqlanalisesentimentos.entity.Login;
 import br.unesp.rc.graphqlanalisesentimentos.repository.UsuarioRepository;
 import br.unesp.rc.graphqlanalisesentimentos.repository.LoginRepository;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Component
 public class LoginMutation implements GraphQLMutationResolver{
 
@@ -20,9 +23,17 @@ public class LoginMutation implements GraphQLMutationResolver{
 
     public Login addLogin(String username, String senha) {
 
+        if(username.equals("") || senha.equals(""))
+        {
+            return null;
+        }
         Login login = new Login();
         login.setUsername(username);
         login.setSenha(senha);
+
+        LocalDateTime horarioAtual = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        login.setUltimo_acesso(horarioAtual.format(formatter));
 
         return loginRepository.saveAndFlush(login);
     }

@@ -20,6 +20,11 @@ public class ContatoMutation implements GraphQLMutationResolver{
 
     public Contato addContato(String email, String celular) {
 
+        if(email.equals("") || celular.equals(""))
+        {
+            return null;
+        }
+
         Contato contato = new Contato();
         contato.setEmail(email);
         contato.setCelular(celular);

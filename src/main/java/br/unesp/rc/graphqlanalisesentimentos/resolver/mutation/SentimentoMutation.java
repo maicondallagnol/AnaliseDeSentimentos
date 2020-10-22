@@ -23,7 +23,7 @@ public class SentimentoMutation implements GraphQLMutationResolver {
     private ImagemRepository imagemRepository;
 
     @NotNull
-    public boolean addSentimento(String nome, String descricao, Integer id_imagem) {
+    public boolean addSentimento(String nome, String descricao, Integer id_imagem, String cor) {
         if(sentimentoRepository.existsByNome(nome))
         {
             return false;
@@ -34,6 +34,7 @@ public class SentimentoMutation implements GraphQLMutationResolver {
         sentimento.setNome(nome);
         sentimento.setDescricao(descricao);
         sentimento.setImagem(imagem);
+        sentimento.setCor(cor);
 
         sentimentoRepository.saveAndFlush(sentimento);
 

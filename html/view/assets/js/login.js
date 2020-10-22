@@ -3,23 +3,35 @@ function autenticarLogin()
     userName_entry = document.getElementById("user").value
     password_entry = document.getElementById("pass").value
 
-    console.log(userName_entry)
-    console.log(password_entry)
-
     const query = `
-    query autenticarLogin($nomeUsuario: String!, $senha: String!){
-        autenticarLogin(nomeUsuario: $nomeUsuario, senha: $senha)
+    query autenticarLogin($username: String!, $senha: String!){
+        autenticarLogin(username: $username, senha: $senha)
         {
            id
         }
     }
     `
-    const variaveis = {nomeUsuario: userName_entry, senha: password_entry}
+    const variaveis = {username: userName_entry, senha: password_entry}
 
     queryFetch(query, variaveis).then(data => {
-        localStorage.clear()
-        localStorage.id = data.data.autenticarLogin.id
-        document.location.href = "index.html"
+        if(!data.data)
+        {
+            const user = document.getElementById("user")
+            const pass = document.getElementById("pass")
+
+            user.value = ""
+            user.placeholder = "Usuário/Senha Incorretos"
+            pass.value = ""
+            pass.placeholder = "Usuário/Senha Incorretos"
+
+        }
+        else
+        {
+            localStorage.clear()
+            localStorage.id = data.data.autenticarLogin.id
+            document.location.href = "index.html"
+        }
+
     })
 }
 

@@ -78,15 +78,16 @@ function saveSentimento()
     const id_imagem_entry = document.querySelector('input[name="selectDog"]:checked').value
     const nome_entry = document.getElementById("nome").value
     const descricao_entry = document.getElementById("descricao").value
+    const cor_entry = document.getElementById("cor").value
 
     mutation=`
-    mutation addSentimento($nome: String!, $descricao: String!, $id_imagem: ID!)
+    mutation addSentimento($nome: String!, $descricao: String!, $id_imagem: ID!, $cor: String!)
     {
-        addSentimento(nome: $nome, descricao: $descricao, id_imagem: $id_imagem)
+        addSentimento(nome: $nome, descricao: $descricao, id_imagem: $id_imagem, cor: $cor)
     }
     `
 
-    variaveis = {nome: nome_entry, descricao: descricao_entry, id_imagem: id_imagem_entry}
+    variaveis = {nome: nome_entry, descricao: descricao_entry, id_imagem: id_imagem_entry, cor: cor_entry}
 
     queryFetch(mutation, variaveis).then( data => {
         if(data.data.addSentimento)

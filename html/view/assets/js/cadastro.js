@@ -38,9 +38,11 @@ function checkLogin(data)
     variaveis = {username: data['username']}
 
     queryFetch(query, variaveis).then(result =>{
-        if(result.data.existsLogin)
+        if(result.data.existsUsername)
         {
-            setUsuarioExistente()
+            username = document.getElementById('username')
+            username.value = ""
+            username.placeholder = "Username já existente!"
         }
         else
         {
@@ -50,11 +52,6 @@ function checkLogin(data)
     });
 }
 
-function setUsuarioExistente()
-{
-    usuario.value = ""
-    usuario.placeholder = "Username já existente!"
-}
 
 function addUsuario(data, id_login, id_contato, id_endereco)
 {
@@ -75,21 +72,94 @@ function addUsuario(data, id_login, id_contato, id_endereco)
 
 function setUsuarioInexistente(data)
 {
-    addLogin(data).then(result => {
-        addContato(data).then( result2 => {
-            addEndereco(data).then( result3 => {
-                const id_login = result.data.addLogin.id
-                const id_contato = result2.data.addContato.id
-                const id_endereco = result3.data.addEndereco.id
-                addUsuario(data, id_login, id_contato, id_endereco).then(result4 =>{
-                    localStorage.id = result4.data.addUsuario.id
-                    document.location.href = "index.html"
+    if(data['username']="" || data['senha']=="")
+    {
+        username = document.getElementById('username')
+        username.value = ""
+        username.placeholder = "Preencha o Username"
+
+        username = document.getElementById('senha')
+        username.value = ""
+        username.placeholder = "Preencha a Senha"
+
+    }
+    else if(data['email']=="" || data['celular']=="")
+    {
+
+        email = document.getElementById('email')
+        email.value = ""
+        email.placeholder = "Preencha o email"
+
+        celular = document.getElementById('celular')
+        celular.value = ""
+        celular.placeholder = "Preencha o celular"
+    }
+    else if(data['nome']=="" || data['sobrenome']=="")
+    {
+
+        nome = document.getElementById('nome')
+        nome.value = ""
+        nome.placeholder = "Preencha o nome"
+
+        sobrenome = document.getElementById('sobrenome')
+        sobrenome.value = ""
+        sobrenome.placeholder = "Preencha o sobrenome"
+    }
+    else if(data['sexo']=="" || data['data_nasc']=="")
+    {
+
+        sexo = document.getElementById('sexo')
+        sexo.value = ""
+        sexo.placeholder = "Preencha o sexo"
+
+        data_nasc = document.getElementById('data_nasc')
+        data_nasc.value = ""
+        data_nasc.placeholder = "Preencha o Data Nascimento"
+    }
+    else if(data['rua']=="" || data['numero']=="")
+    {
+
+        rua = document.getElementById('rua')
+        rua.value = ""
+        rua.placeholder = "Preencha o rua"
+
+        numero = document.getElementById('numero')
+        numero.value = ""
+        numero.placeholder = "Preencha o numero"
+    }
+    else if(data['cep']=="" || data['cidade']=="" || data['estado']=="")
+    {
+
+        cep = document.getElementById('cep')
+        cep.value = ""
+        cep.placeholder = "Preencha o cep"
+
+        cidade = document.getElementById('cidade')
+        cidade.value = ""
+        cidade.placeholder = "Preencha o cidade"
+
+        estado = document.getElementById('estado')
+        estado.value = ""
+        estado.placeholder = "Preencha o estado"
+    }
+    else
+    {
+        addLogin(data).then(result => {
+            addContato(data).then( result2 => {
+                addEndereco(data).then( result3 => {
+                    const id_login = result.data.addLogin.id
+                    const id_contato = result2.data.addContato.id
+                    const id_endereco = result3.data.addEndereco.id
+                    addUsuario(data, id_login, id_contato, id_endereco).then(result4 =>{
+                        localStorage.id = result4.data.addUsuario.id
+                        document.location.href = "index.html"
+                    })
                 })
+
             })
         })
-    })
+    }
 }
-
 
 function addLogin(data)
 {

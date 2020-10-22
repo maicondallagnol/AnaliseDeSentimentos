@@ -21,7 +21,6 @@ public class EnderecoMutation implements GraphQLMutationResolver{
     public Endereco addEndereco(String rua, String numero, String cep,
                                 String cidade, String estado) {
 
-
         Endereco endereco = new Endereco();
         endereco.setRua(rua);
         endereco.setNumero(numero);

@@ -18,13 +18,15 @@ function getBarItens()
     queryFetch(query, variaveis).then(data => 
         {
             if(!data.data.getUsuario){
-                document.location.href = "register.html"
+                document.location.href = "login.html"
             }
             const nome_head = document.getElementById("nome_head")
             nome_head.innerHTML = data.data.getUsuario.nome
         })
 }
 
+
+function exit() {localStorage.id = 0}
 
 
 function queryFetch(query_entry, variables_entry)

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Register - Brand</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -24,50 +24,44 @@
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Crie uma Conta!</h4>
                             </div>
-                            <form class="user">
+                            <form class="user" id="form">
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nome" placeholder="Nome" name="first_name"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="sobrenome" placeholder="Sobrenome" name="last_name"></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" required="required" type="text" id="nome" placeholder="Nome" name="first_name"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" required="required" id="sobrenome" placeholder="Sobrenome" name="last_name"></div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="sexo" placeholder="Sexo" name="sexo"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="data_nasc" placeholder="Data Nascimento" name="data_nasc"></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" required="required" type="text" id="sexo" placeholder="Sexo" name="sexo"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" required="required" id="data_nasc" placeholder="Data Nascimento" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" name="data_nasc"></div>
                                 </div>
                                 
                                 <br>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="user" id="username"  placeholder="Username" name="username"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="tel" id="celular" placeholder="Telefone (XX)-X-XXXX-XXXX" name="telefone" ></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" required="required" type="user" id="username" maxlength="200" placeholder="Username" name="username"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="tel" required="required" id="celular" placeholder="Telefone: XX-XXXXX-XXXX" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}"maxlength="15" name="telefone" ></div>
                                 </div>
 
-                                <div class="form-group"><input class="form-control form-control-user" type="email" id="email" aria-describedby="emailHelp" placeholder="Email" name="email"></div>
+                                <div class="form-group"><input class="form-control form-control-user" type="email" required="required" id="email" aria-describedby="emailHelp" placeholder="Email" name="email"></div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="senha" placeholder="Senha" name="Password"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Confirme a Senha" name="password_repeat"></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" required="required" type="password" id="senha" placeholder="Senha" maxlength="20" name="Password"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" required="required" id="exampleRepeatPasswordInput" placeholder="Confirme a Senha" maxlength="20" name="password_repeat"></div>
                                 </div>
 
                                 <br>
                                 
                                 <div class="form-group row">
-                                    <div class="col-sm-9 mb-3 mb-sm-0"><input class="form-control form-control-user" id="rua"  placeholder="Rua" name="rua"></div>
-                                    <div class="col-sm-3"><input class="form-control form-control-user" id="numero" placeholder="Num" name="numero" ></div>
+                                    <div class="col-sm-9 mb-3 mb-sm-0"><input class="form-control form-control-user" required="required" id="rua" maxlength="30" placeholder="Rua" name="rua"></div>
+                                    <div class="col-sm-3"><input class="form-control form-control-user" id="numero" required="required" pattern="[0-9]*" placeholder="Num" name="numero" ></div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-4 mb-3 mb-sm-0"><input class="form-control form-control-user" id="cep"  placeholder="CEP" name="rua"></div>
-                                    <div class="col-sm-4"><input class="form-control form-control-user" id="cidade" placeholder="Cidade" name="cidade" ></div>
-                                    <div class="col-sm-4"><input class="form-control form-control-user" id="estado" placeholder="Estado" name="estado" ></div>
+                                    <div class="col-sm-4 mb-3 mb-sm-0"><input class="form-control form-control-user" required="required" id="cep" maxlength="9" placeholder="CEP" name="rua"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" id="cidade" required="required" placeholder="Cidade" maxlength="20" name="cidade" ></div>
+                                    <div class="col-sm-2"><input class="form-control form-control-user" id="estado" required="required" placeholder="Estado" maxlength="2" name="estado" ></div>
                                 </div>
-
-                                <!-- <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="user" id="username"  placeholder="Username" name="username"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="tel" id="celular" placeholder="Telefone (XX)-X-XXXX-XXXX" name="telefone" pattern="([0-9]{2})-[0-9]-[0-9]{4}-[0-9]{4}"></div>
-                                </div> -->
-                                
-                                <button onclick="startCadastro()" class="btn btn-primary btn-block text-white btn-user">Registrar Conta</button>
-                                <hr><a class="btn btn-primary btn-block text-white btn-google btn-user" role="button"><i class="fab fa-google"></i>&nbsp; Registrar com Google</a><a class="btn btn-primary btn-block text-white btn-facebook btn-user" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Registrar com Facebook</a>
-                                <hr>
                             </form>
+                            <button onclick="startCadastro()" type="submit" class="btn btn-primary btn-block text-white btn-user">Registrar Conta</button>
+                            <hr><a class="btn btn-primary btn-block text-white btn-google btn-user" role="button"><i class="fab fa-google"></i>&nbsp; Registrar com Google</a><a class="btn btn-primary btn-block text-white btn-facebook btn-user" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Registrar com Facebook</a>
+                            <hr>
                             <div class="text-center"></div>
                             <div class="text-center"><a class="small" href="login.html">Já possui uma conta? Faça Login!</a></div>
                         </div>

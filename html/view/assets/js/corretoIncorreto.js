@@ -70,10 +70,12 @@ function getEmoticonAnalise()
             sentimento
             {
                 nome
+                descricao
                 imagem
                 {
                     caminho
                 }
+                cor
             }
             
         }
@@ -84,7 +86,33 @@ function getEmoticonAnalise()
 
     queryFetch(query, variaveis).then(data => {
         const box = document.getElementById("box-correto-incorreto")
-        
+
+
+        const descr = document.getElementById("descricaoadd")
+        const pdes = document.createElement("p")
+        const node2 = document.createTextNode(data.data.getAnalise.sentimento.descricao)
+        pdes.appendChild(node2)
+        pdes.style.fontSize = "25px"
+        descr.appendChild(pdes)
+
+                
+        const cor = document.getElementById("cor")
+        cor.style.background = data.data.getAnalise.sentimento.cor
+        // pdes.appendChild(node2)
+        // pdes.style.fontSize = "25px"
+        // descr.appendChild(pdes)
+
+        // const wrap = document.getElementsByTagName("head")[0]
+
+        // const style = document.createElement("style")
+        // style.backgroundImage = "linear-gradient(180deg," + data.data.getAnalise.sentimento.imagem.cor + "10%, #000)"
+        // style.className = "back"
+
+
+        // wrap.appendChild(style)
+
+        // barralat.className = barralat.className + " back"
+
         const p = document.createElement("p")
         const node = document.createTextNode(data.data.getAnalise.sentimento.nome)
         p.appendChild(node)
