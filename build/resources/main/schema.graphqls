@@ -26,7 +26,7 @@ type Mutation {
   addFrase(frase: String!): Frase!
   deleteFrase(id: ID!): Boolean!
 
-  addSentimento(nome: String!, descricao: String!, id_imagem: ID!): Boolean
+  addSentimento(nome: String!, descricao: String!, id_imagem: ID!, cor: String): Boolean
   deleteSentimento(id: ID!): Boolean
 
   addAnalise(id_frase: ID!, id_sentimento: ID!, id_usuario: ID!, correto: Boolean): Analise
@@ -50,6 +50,7 @@ type Sentimento {
   nome: String!
   descricao: String!
   imagem: Imagem!
+  cor: String!
 }
 
 type Usuario {

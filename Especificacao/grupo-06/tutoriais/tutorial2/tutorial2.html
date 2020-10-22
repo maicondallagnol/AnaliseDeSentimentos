@@ -1,0 +1,433 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>:: Sistemas Orientados a Objetos 2020 - Prof. Dr. Frank J. Affonso</title>
+        <link rel="stylesheet" href="../../../foundation-sites-6.6.3-CSS/assets/css/foundation.css" />        
+        <link rel="stylesheet" href="../../../foundation-sites-6.6.3-CSS/assets/css/app.css" />
+    </head>
+
+    <body>
+        <!-- TOPO DA PÁGINA-->
+        <div id="topo">
+            <div class="background">
+                <div class="grid-container">
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12">
+                            <div class="cell small-10">&nbsp;</div>
+                            <div class="cell small-2">
+                                <p class="right marginTop"><button class="button warning" data-open="exampleModal1">Sobre</button></p>
+
+                                <div class="reveal" id="exampleModal1" data-reveal>
+                                    <h1>Guia para Documentação</h1>
+                                    <p class="lead">Prof. Dr. Frank J. Affonso.</p>
+                                    <p>Projeto criado com ZURB Foundation 6.6.3.</p>
+                                    <button class="close-button" data-close aria-label="Close modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell small-12">
+                            <div class="heigh100">                    
+                            </div>
+                        </div>
+                        <div class="cell small-12">
+                            <h2 class="whiteBold">Sistemas Orientados a Objetos 2020</h2>
+                            <h3 class="white">Atividades Remotas</h3>
+                            <h4 class="white">Prof. Frank J. Affonso</h4>
+                        </div>                                           
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <!-- TOPO DA PÁGINA-->
+
+        <!-- CORPO DA PÁGINA-->        
+        <div id="corpo">
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-12 heigh50">
+                        &nbsp;
+                    </div>
+
+                    <div class="cell small-12">
+                        <div class="callout">
+                            <div class="cell small-12">
+                                <h1> Desenvolvendo aplicações Java com Graphql </h1>
+                            </div>
+                            <div class="cell small-12">
+                                <hr>                    
+                            </div>
+                            <div class="cell small-12">
+                                <p class="bold"> GRUPO: 6 </p>
+                            </div>                                
+                            <div class="cell small-12">                    
+                                <ul>
+                                    <li><strong>Lucas Martins Alves</strong></li>
+                                    <li>Maicon Dall'agnol</li>
+                                    <li>Thiago Polycarpo Abreu de Oliveira</li>
+                                </ul>
+                            </div>
+
+                            <div class="cell small-12">
+                                <hr>                    
+                            </div>
+
+                            <div class="cell small-12">
+                                <p class="bold"> Pré-requisitos </p>
+                            </div>                      
+                            <div class="cell small-12">
+                                <ul class="vertical menu">
+                                    <li><a href="https://www.oracle.com/technetwork/pt/java/javase/downloads/index.html">Java 8 ou superior - Versão 11.0.5 LTS</a></li>
+                                    <li><a href="https://netbeans.org/">Netbeans IDE - Versão 11.3</a></li>
+                                    <li><a href="https://github.com/prisma-labs/graphql-playground/releases/tag/v1.8.10">Graphql-playground - Versão 1.8.10</a></li>
+                                </ul>
+                            </div>                            
+                        </div>
+                    </div>
+
+
+                    <!--collout-->
+                    <div class="cell small-12">
+                        &nbsp;                    
+                    </div>
+                    <div class="cell small-12">                                
+                        <h3> Objetivo</h3>
+                        <hr>
+                        <p> 
+                            O objetivo deste tutorial é apresentar como utilizar Graphql em um projeto Java. 
+                        </p>
+                    </div>
+
+
+                    <div class="cell small-12">
+                        &nbsp;                    
+                    </div>
+                    <div class="cell small-12">                                
+                        <h3> O que é o Graphql?</h3>
+                        <hr>
+                        <p> O Graphql é uma linguagem de consulta criada pelo Facebook, que considerada
+                            uma alternativa ao Rest e SOAP. </p>
+                        <p> 
+                            GraphQL fornece uma descrição completa e compreensível dos dados em sua API, 
+                            dá aos clientes o poder de pedir exatamente o que precisam e nada mais, torna 
+                            mais fácil evoluir APIs ao longo do tempo e habilita ferramentas poderosas de desenvolvedor. 
+                        </p>
+                        <p> 
+                            Graphql-playground é uma ferramenta para testar as consultas em graphql. 
+                        </p>
+                        <p class="right"> 
+                            <a href="https://graphql.org/learn/" target="_blank"> (GraphQL, 2020)</a> 
+                        </p>
+                    </div>
+
+                    <div class="cell small-12">
+                        &nbsp;                    
+                    </div>
+                    
+                    <div class="cell small-12">                                
+                        <h3> Apresentando o Exemplo</h3>
+                        <hr>
+                        <p> 
+                            Para o exemplo, vamos supor que a gente queira buscar detalhes de um filme
+                            específico de uma plataforma de streaming. Com GraphQL, a seguinte consulta 
+                            seria enviada ao servidor para retornar os detalhes do filme com o identificador "movie-1".
+                        </p>
+                        <textarea name="movieById" rows="11" cols="30">
+{
+    movieById(id: "movie-1"){
+        id
+        name
+        genre
+        director{
+            firstName
+            lastName            
+        }
+    }
+}
+                    </textarea>
+                    <div class="cell small-12">
+                        &nbsp;                    
+                    </div>
+                    <div class="cell small-12">                                
+                        <h3> Criando o projeto</h3>
+                        <hr>
+                        <p> Para o desenvolvimento deste tutorial, o Spring initializr será utilizado 
+                            (<a href="https://start.spring.io/.">https://start.spring.io</a>)
+                        </p>                      
+
+                        <img src="images/image-01.png" width="1031" height="937" alt="image-01"/>
+
+                        <br>
+                        <br>                        
+                        <p>
+                            Após gerar o projeto e abrir, vamos modificar o arquivo 
+                            <code> build.gradle</code> deixando as dependências como o exemplo abaixo:
+                        </p>  
+
+                        <textarea name="build.gradle" rows="7" cols="82">
+dependencies {
+    implementation 'com.graphql-java:graphql-java:11.0'
+    implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0'
+    implementation 'com.google.guava:guava:26.0-jre'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+                        </textarea>
+                        <br>
+                        
+                    </div>
+
+
+                    <div class="cell small-12">
+                        &nbsp;                    
+                    </div>
+                    <div class="cell small-12">
+                        <h3> Criando o exemplo</h3>
+                        <hr>
+                        <p> Vamos adicionar um novo arquivo <code>schema.graphqls</code> no diretório </p>
+                        <p> <code>src/main/resources</code> com o seguinte código:</p>
+                        <br>                       
+                        <textarea name="schema.graphqls" rows="16" cols="29">
+type Query {
+    movieById(id: ID): Movie 
+}
+    
+type Movie {
+    id: ID
+    name: String
+    genre: String
+    director: Director     
+}
+
+type Director {
+    id: ID
+    firstName: String
+    lastName: String
+}                            
+</textarea> 
+                    <p>Nesse schema é definido a nossa consulta (que retorna um tipo Movie)
+                        e os tipos Movie e Director.</p>                   
+                    <p>Agora para fazer a leitura deste schema vamos criar a classe 
+                        <code>GraphQLProvider</code> no pacote <code>com.graphqljava.tutorial.moviedetails</code>
+                        com os seguintes metodos:<code>init</code>, que irá criar uma instância <code>GraphQL</code>,
+                        Esta instância <code>GraphQL</code> é exposta como um Spring Bean por meio do método 
+                        <code>graphQL()</code> anotado com <code>@Bean</code>, em seguida <code>buildSchema</code>
+                        que cria uma instancia <code>GraphQLSchema</code> e conecta o código para buscar dados, e
+                        por ultimo o <code>buildWiring</code> que usa a classe <code>graphQLDataFetchers</code>
+                        que ainda vamos criar, para resgistrar as buscas dos dados.
+
+                    </p>
+                    
+                        <textarea name="GraphQLProvider" rows="50" cols="96">
+package com.graphqljava.tutorial.moviedetails;
+
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
+import graphql.GraphQL;
+import graphql.schema.GraphQLSchema;
+import graphql.schema.idl.RuntimeWiring;
+import graphql.schema.idl.SchemaGenerator;
+import graphql.schema.idl.SchemaParser;
+import graphql.schema.idl.TypeDefinitionRegistry;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.net.URL;
+
+import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
+
+@Component
+public class GraphQLProvider {
+
+
+    @Autowired
+    GraphQLDataFetchers graphQLDataFetchers;
+
+    private GraphQL graphQL;
+
+    @PostConstruct
+    public void init() throws IOException {
+        URL url = Resources.getResource("schema.graphqls");
+        String sdl = Resources.toString(url, Charsets.UTF_8);
+        GraphQLSchema graphQLSchema = buildSchema(sdl);
+        this.graphQL = GraphQL.newGraphQL(graphQLSchema).build();
+    }
+
+    private GraphQLSchema buildSchema(String sdl) {
+        TypeDefinitionRegistry typeRegistry = new SchemaParser().parse(sdl);
+        RuntimeWiring runtimeWiring = buildWiring();
+        SchemaGenerator schemaGenerator = new SchemaGenerator();
+        return schemaGenerator.makeExecutableSchema(typeRegistry, runtimeWiring);
+    }
+
+    private RuntimeWiring buildWiring() {
+        return RuntimeWiring.newRuntimeWiring()
+                .type(newTypeWiring("Query")
+                        .dataFetcher("movieById", graphQLDataFetchers.getBookByIdDataFetcher()))
+                .type(newTypeWiring("Movie")
+                        .dataFetcher("director", graphQLDataFetchers.getAuthorDataFetcher()))
+                .build();
+    }
+
+    @Bean
+    public GraphQL graphQL() {
+        return graphQL;
+    }
+
+}
+</textarea>
+                        <p>
+                            O próximo passo será criar a classe <code>GraphQLDataFetchers</code> 
+                            que contem duas listas, uma para filmes e outra para diretores. De 
+                            mesmo modo, contem dois metodos para busca dos filmes e diretores 
+                        </p>   
+                        <p> Veja o conteúdo da classe <code>GraphQLDataFetchers</code></p>
+                        <textarea name="java2" rows="62" cols="79">
+package com.graphqljava.tutorial.moviedetails;
+
+import com.google.common.collect.ImmutableMap;
+import graphql.schema.DataFetcher;
+import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+@Component
+public class GraphQLDataFetchers {
+
+    private static List<Map<String, String>> movies = Arrays.asList(
+            ImmutableMap.of("id", "movie-1",
+                    "name", "The Hobbit: An Unexpected Journey",
+                    "genre", "Adventure",
+                    "directorId", "director-1"),
+            ImmutableMap.of("id", "movie-2",
+                    "name", "The Old Guard",
+                    "genre", "Action",
+                    "directorId", "director-2"),
+            ImmutableMap.of("id", "movie-3",
+                    "name", "Interstellar",
+                    "genre", "Science Fiction",
+                    "directorId", "director-3")
+    );
+
+    private static List<Map<String, String>> directors = Arrays.asList(
+            ImmutableMap.of("id", "director-1",
+                    "firstName", "Peter",
+                    "lastName", "Jackson"),
+            ImmutableMap.of("id", "director-2",
+                    "firstName", "Gina",
+                    "lastName", "Prince"),
+            ImmutableMap.of("id", "director-3",
+                    "firstName", "Christopher",
+                    "lastName", "Nolan")
+    );
+
+    public DataFetcher getMovieByIdDataFetcher() {
+        return dataFetchingEnvironment -> {
+            String movieId = dataFetchingEnvironment.getArgument("id");
+            return movies
+                    .stream()
+                    .filter(movie -> movie.get("id").equals(movieId))
+                    .findFirst()
+                    .orElse(null);
+        };
+    }
+
+    public DataFetcher getDirectorDataFetcher() {
+        return dataFetchingEnvironment -> {
+            Map<String, String> movie = dataFetchingEnvironment.getSource();
+            String directorId = movie.get("directorId");
+            return directors
+                    .stream()
+                    .filter(director -> director.get("id").equals(directorId))
+                    .findFirst()
+                    .orElse(null);
+        };
+    }
+}
+</textarea>
+                        <p> 
+                            Observação: Neste exemplo os dados vieram de uma lista estatica em uma classe,
+                            mas nao quer dizer que não possa vir de uma lista estática na memória, 
+                            de um banco de dados ou serviço externo.
+                        </p>
+
+                    <div class="cell small-12">
+                        &nbsp;                    
+                    </div>
+                    <div class="cell small-12">
+                        <h3> Testando a consulta</h3>
+                        <hr>
+                        <p> 
+                            Para dar inicio ao teste, primeiramente temos que rodar o projeto
+                            <code>movie-details</code> (botao direito, run).
+                        </p>
+
+                        <p> Após isso basta abrir o <a href="https://github.com/prisma-labs/graphql-playground/releases/tag/v1.8.10">Graphql-Playground</a>
+                            e deixar como na imagem a seguir, "URL ENDPOINT" e <code>http://localhost:8080/graphql</code> e clicar em Open.          
+                        </p>
+                        <img src="images/image-02.png" width="1031" height="937" alt="image-02"/>
+                        <br>
+                        <br>
+                        <p> Na tela que será mostrada, é possível entrar com a consulta, clicar no icone 
+                            "play" e visualizar o retorno.
+                        </p>
+                        <img src="images/image-03.png" width="1031" height="937" alt="image-03"/>
+                        <br>
+                        <div class="cell small-12">
+                            <div class="callout">
+                                <div class="grid-container">
+                                    <div class="grid-x grid-margin-x">
+                                        <div class="cell small-9 bold">Download do projeto completo -> </div>
+                                        <div class="cell small-3">
+                                            <a href="files/movie-details.zip" class="hollow button float-center">Clique aqui</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- RODAPÉ DA PÁGINA-->
+        <div id="rodape">
+            <div  class="fundoCinza5px"> &nbsp; </div>
+            <!-- INSERINDO CARDS..-->
+            <div  class="fundoPreto">
+                <div class="fundoPreto20px">
+
+                </div>
+                <div class="grid-container">
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12">
+                            <p class="whiteBold"> REFERÊNCIAS </p>
+                            <hr>
+                            <p><a class="white" href="https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/#graphql-java-overview">Getting started with GraphQL Java and Spring Boot</a></p>
+                            <p>&nbsp;</p>
+                        </div>                        
+                    </div>
+                </div>    
+            </div>
+        </div>
+        <!-- RODAPÉ DA PÁGINA-->
+
+        <script src="../../../foundation-sites-6.6.3-CSS/assets/js/vendor.js"></script>
+        <script src="../../../foundation-sites-6.6.3-CSS/assets/js/foundation.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+
+    </body>
+</html>

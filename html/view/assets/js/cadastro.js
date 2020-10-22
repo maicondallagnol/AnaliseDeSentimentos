@@ -72,7 +72,7 @@ function addUsuario(data, id_login, id_contato, id_endereco)
 
 function setUsuarioInexistente(data)
 {
-    if(data['username']="" || data['senha']=="")
+    if(data['username']=="" || data['senha']=="")
     {
         username = document.getElementById('username')
         username.value = ""

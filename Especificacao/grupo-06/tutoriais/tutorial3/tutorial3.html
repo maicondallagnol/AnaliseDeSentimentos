@@ -1,0 +1,396 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>:: Sistemas Orientados a Objetos 2020 - Prof. Dr. Frank J. Affonso</title>
+        <link rel="stylesheet" href="../../../foundation-sites-6.6.3-CSS/assets/css/foundation.css" />        
+        <link rel="stylesheet" href="../../../foundation-sites-6.6.3-CSS/assets/css/app.css" />
+    </head>
+
+    <body>
+        <!-- TOPO DA PÁGINA-->
+        <div id="topo">
+            <div class="background">
+                <div class="grid-container">
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12">
+                            <div class="cell small-10">&nbsp;</div>
+                            <div class="cell small-2">
+                                <p class="right marginTop"><button class="button warning" data-open="exampleModal1">Sobre</button></p>
+
+                                <div class="reveal" id="exampleModal1" data-reveal>
+                                    <h1>Guia para Documentação</h1>
+                                    <p class="lead">Prof. Dr. Frank J. Affonso.</p>
+                                    <p>Projeto criado com ZURB Foundation 6.6.3.</p>
+                                    <button class="close-button" data-close aria-label="Close modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell small-12">
+                            <div class="heigh100">                    
+                            </div>
+                        </div>
+                        <div class="cell small-12">
+                            <h2 class="whiteBold">Sistemas Orientados a Objetos 2020</h2>
+                            <h3 class="white">Atividades Remotas</h3>
+                            <h4 class="white">Prof. Frank J. Affonso</h4>
+                        </div>                                           
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <!-- TOPO DA PÁGINA-->
+
+        <!-- CORPO DA PÁGINA-->        
+        <div id="corpo">
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-12 heigh50">
+                        &nbsp;
+                    </div>
+
+                    <div class="cell small-12">
+                        <div class="callout">
+                            <div class="cell small-12">
+                                <h1> Desenvolvendo front-end com framework Bootstrap </h1>
+                            </div>
+                            <div class="cell small-12">
+                                <hr>                    
+                            </div>
+                            <div class="cell small-12">
+                                <p class="bold"> GRUPO: 6 </p>
+                            </div>                                
+                            <div class="cell small-12">                    
+                                <ul>
+                                    <li>Lucas Alves</li>
+                                    <li>Maicon Dall'Agnol</li>
+                                    <li><b>Thiago Polycarpo</b></li>
+                                </ul>
+                            </div>
+
+                            <div class="cell small-12">
+                                <hr>                    
+                            </div>
+
+                            <div class="cell small-12">
+                                <p class="bold"> Pré-requisitos </p>
+                            </div>                      
+                            <div class="cell small-12">
+                                <ul class="vertical menu">
+                                    <li><a href="https://getbootstrap.com/">Bootstrap</a></li>
+                                    <li><a href="https://netbeans.org/">Netbeans IDE</a></li>
+                                    <li><a href="https://tomcat.apache.org/download-80.cgi">Apache TomCat 8.0.27</a></li>
+                                </ul>
+                            </div>                            
+                        </div>
+                    </div>
+
+
+                    <!--collout-->
+                    <div class="cell small-12">
+                        &nbsp;                    
+                    </div>
+                    <div class="cell small-12">                                
+                        <h3> Objetivo</h3>
+                        <hr>
+                        <p> 
+                            O objetivo principal deste tutorial é apresentar como  o framework 
+                            Boostrap pode ser utilizado no visual de sites e web apps. Esse tutorial utiliza a IDE 
+                            Netbeans 11.3 na criação dos sites e o Servidor local Apache TomCat 8.0.27.
+                        </p>
+                    </div>
+
+
+                    <div class="cell small-12">
+                        &nbsp;                    
+                    </div>
+                    <div class="cell small-12">                                
+                        <h3> O que é o Bootstrap?</h3>
+                        <hr>
+                        <p>Bootstrap é o um framework de front-end de HTML, CSS e JavaScript para criação responsiva de apps de celular e websites</p>
+                        <p>É gratuíto</p>
+                        <p>Utilizado com HTML e CSS para design de formulários, botões, tabelas, carrossel de imagem e outros.</p>
+                        <p>Utilizado para criação de pliguins em JavaScript</p>
+                        <p class="right"> 
+                            <a href="https://www.w3schools.com/bootstrap4/" target="_blank"> (Bootstrap, 2020)</a> 
+                        </p>
+                    </div>
+
+
+                    <div class="cell small-12">
+                        &nbsp;                    
+                    </div>
+                    <div class="cell small-12">                                
+                        <h3> Criando o projeto</h3>
+                        <hr>
+                        <p> Vamos trabalhar neste tutorial com projeto Java Web. Para isso, vá ao meu "File" -> "New Project". </p>                        
+
+                        <p> Na janela que se abre, selecione a categoria "Java Web" e, em seguida, "Web Application"
+
+                        <p> Preencha os campos conforme as figuras abaixo e clique no botão "Finish".<p>
+                            <img src="images/javaweb.png" width="752" height="472" alt="imagen-01"/>
+                            <img src="images/javaweb1.png" width="752" height="472" alt="imagen-01"/>
+                            <img src="images/javaweb2.png" width="752" height="472" alt="imagen-01"/>
+
+                        <p> Observe a estrutura do projeto criado na IDE:</p>
+                        <img src="images/estrutura.png" width="318" height="211" alt="imagen-02"/>
+
+                        <br>
+                        <br>
+                        <p> Observe agora o conteúdo do arquivo <code>index.jps</code> do projeto </p>
+                        <textarea name="pom1" rows="15" cols="20">
+						
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 4 Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div>
+  <h1>Análise de sentimento</h1>
+  <p>Análise de Sentimentos transforma informações não-estruturadas em dados estruturados de opiniões públicas sobre produtos, serviços, marcas, política ou qualquer tópico sobre o qual as pessoas expressem suas impressões. Estes dados podem ser muito úteis em análises de marketing, relações públicas, análises e feedback de produtos e atendimento ao cliente.</p> 
+</div>
+ 
+ 
+</body>  
+</html>  
+</textarea>
+                        
+
+                        <br>
+                        <p> Para começar utilizar o Bootstrap é necessário utilizar essas tags do arquivo css e do arquivo js, dessa maneira você já anexou o framework no seu código e pode começar editar sua aparência. </p>
+
+                        <br>
+                        <p> Observe a aparência no inicio do projeto:</p>
+                        <img src="images/inicio.png" width="1000" height="500" alt="imagen-02"/>
+						  <div class="cell small-12">
+                        <h3> Vamos adicionar o comando jumbotron text-center e ver como já muda: </h3>
+                        <hr>
+                        <textarea name="java1" rows="30" cols="20">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 4 Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<body>
+
+  <div class="jumbotron text-center" style="margin-bottom:0 background:">
+  <h1>Análise de sentimento</h1>
+  <p>Análise de Sentimentos transforma informações não-estruturadas em dados estruturados de opiniões públicas sobre produtos, serviços, marcas, política ou qualquer tópico sobre o qual as pessoas expressem suas impressões. Estes dados podem ser muito úteis em análises de marketing, relações públicas, análises e feedback de produtos e atendimento ao cliente.</p> 
+</div>
+ 
+ 
+</body>  
+</html> 
+</textarea>
+                        
+<p> Observe a estrutura do projeto criado na IDE:</p>
+                        <img src="images/jumbotron.png" width="1000" height="500" alt="imagen-02"/>
+
+
+                        <p>
+                            O próximo passo agora é criar o comando navbar para criarmos os links do site
+                        </p>
+                        
+                        <p> Observe o conteúdo: </p>
+                        <textarea name="java2" rows="20" cols="20">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Menu</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">O que é</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Ciência de dados</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Aprendizado de Máquina</a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
+
+                        </textarea>
+
+                        <p> Observe a imagem resultante do código acima:</p>
+                        <img src="images/menu.png" width="1000" height="500" alt="imagen-02"/>
+
+
+<br>
+                        <p>
+                            O próximo passo agora é criar um container onde ficarão as informações do
+                            site conforme formos navegando por ele
+                        </p>
+                        
+                        <p> Observe o conteúdo: </p>
+                        <textarea name="java2" rows="20" cols="20">
+                       
+                        <div class="container" style="margin-top:30px">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>Resumo</h2>
+      <img src="images/sentimentos.jpeg" width="300" height="250" alt="imagen-02">
+      <p class="text-center; background: white" >Análise de Sentimentos transforma informações não-estruturadas em dados estruturados de opiniões públicas sobre produtos, serviços, marcas, política ou qualquer tópico sobre o qual as pessoas expressem suas impressões. Estes dados podem ser muito úteis em análises de marketing, relações públicas, análises e feedback de produtos e atendimento ao cliente.</p>
+      <h3>Some Links</h3>
+      <p>Lorem ipsum dolor sit ame.</p>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <hr class="d-sm-none">
+    </div>
+    <div class="col-sm-8">
+      <h2>Análise de Sentimentos e Machine Learning</h2>
+      <h5>David Matos, Out 9, 2019</h5>
+       <img src="images/asm.jpg" width="750" height="300" alt="imagen-03"">
+      <p>Análise de sentimentos é a tarefa de identificar se a opinião que foi expressada em um determinado texto, é positiva ou negativa. Tive o primeiro contato com soluções de análise de sentimentos alguns anos atrás, quando trabalhei com as soluções da OpenText, ainda no Brasil (recentemente tive a oportunidade de visitar a sede da empresa na cidade de Waterloo, na província de Ontario no Canadá e conversar com alguns profissionais que trabalham com Analytics).
+
+A ascensão das mídias sociais, como blogs e redes sociais tem despertado interesse em análise de sentimento. Com a proliferação de opiniões, avaliações, recomendações e outras formas de expressão on-line, a opinião se transformou em uma espécie de moeda virtual para empresas que desejam comercializar os seus produtos, identificar novas oportunidades e gerenciar suas reputações. Como as empresas estão cada vez mais interessadas em automatizar o processo de pesquisa sobre o que está sendo falado cobre elas, a compreensão das conversas nas mídias sociais, a fim de identificar conteúdo relevante, que permita tomar ações específicas, tem levado as empresas a buscar soluções de análise de sentimentos.
+
+Para começar, é importante compreender que opiniões e sentimentos, bem como seus conceitos relacionados como avaliação, atitude, emoção e humor são influenciadores do comportamento humano. Nossas crenças e percepções sobre a realidade, assim como nossas escolhas, são bastante condicionadas com a forma que outras pessoas veem e percebem o mundo. Nossa visão do mundo, é muitas vezes influenciada pela visão e opinião de outras pessoas. E isso não acontece apenas com indivíduos, mas também com as empresas. E por isso, cada vez mais as empresas estão interessadas em saber a percepção de outras empresas e indivíduos sobre seus produtos e serviços. E esta é a função da análise de sentimentos, também conhecida como opinion mining.</p>
+      <br>
+      <h2>Entenda a relação entre machine learning e análise de sentimentos</h2>
+      <h5>Alexandre Schio , April 27, 2017</h5>
+      <img src="images/ml.jpg" width="750" height="300" alt="imagen-03"">
+      
+      <p>A fim de prever um tipo de emoção expressa em algum texto, por exemplo, ele é primeiro analisado pelo software para obter as formas de base de palavras. A tarefa seguinte será fazer o processamento de linguagem natural (PNL).
+
+Veja um passo a passo das ações que são executadas pelo software durante um processo de análise de sentimentos a partir de um texto:
+
+discursos separados por partes (blocos);
+
+frequência de palavras;
+
+quantidades numéricas;
+
+pessoas mencionadas;
+
+datas;
+
+horários;
+
+estrutura das frases;
+
+substantivos e adjetivos aplicados no texto.
+
+A combinação de ferramentas de PNL com algoritmos de machine learning pode identificar as emoções expressas no texto por meio de saídas binárias, conhecidas também como resultados bipolares.
+
+Alguns dos principais exemplos de saídas binárias ou resultados bipolares são:
+
+positivo/negativo;
+
+bom/ruim;
+
+bem/mal;
+
+satisfatório/insuficiente;
+
+gosto/não gosto.
+
+Cada resultado gera uma palavra que é tratada isoladamente e classificada como um valor ou outro. Assim, a soma dos pontos positivos e negativos é usada para decidir quais das saídas binárias serão utilizadas.
+
+Um sistema de mapeamento das palavras e das pontuações atribuídas a cada uma delas ajuda a rotulá-las e classificá-las para uma fácil e rápida detecção e compreensão dos algoritmos.
+
+Esses algoritmos executam duas etapas para selecionar as palavras de entrada. Primeiro, classificam as palavras em características e, em segundo lugar, eliminam as dimensões. Esse é um método convencional, mas não uma técnica ideal. A razão para isso é que é difícil treinar máquinas para interpretar frases mais complexas.
+
+Considere as seguintes frases como exemplo: “Eu sou feliz” e “Eu não sou feliz”.
+
+Usando os métodos convencionais, fica difícil diferenciar as sentenças, mas, com um algoritmo de machine learning, o computador faz análises mais profundas e complexas de textos, adquirindo uma aprendizagem superior para interpretar uma sentença inteira.
+
+Ou seja, uma aprendizagem mais profunda gera técnicas de compreensão da semântica e de estruturas das frases.
+
+Nesse caso, para a frase “Eu não sou feliz”, a palavra “não” funciona como uma matriz de rotação. Então, a matriz de rotação atuará na próxima palavra, que é “feliz”. Esse processo mudará a polaridade e a sentença será identificada de modo semanticamente correto.</p>
+    </div>
+  </div>
+</div>
+                        </textarea>   
+
+                        <p> Observe a imagem resultante do código acima:</p>
+                        <img src="images/container.png" width="1000" height="500" alt="imagen-02"/>
+
+                       <br>
+                        <p>
+                            O próximo passo agora é criar o comando navbar para criarmos o rodape do site:
+                        </p>
+                        
+                        <p> Observe o conteúdo:</p>
+                        <textarea name="java2" rows="15" cols="20">
+                        	<div class="jumbotron text-center" style="margin-bottom:0">
+  <h2>Social Media </h2>
+
+<!--Facebook-->
+<button type="button" class="btn btn-fb"><i class="fa fa-facebook pr-1"></i> Facebook</button>
+<!--Twitter-->
+<button type="button" class="btn btn-tw"><i class="fa fa-twitter pr-1"></i> Twitter</button>
+<!--Google +-->
+<button type="button" class="btn btn-gplus"><i class="fa fa-google pr-1"></i> Google +</button>
+<!--Linkedin-->
+<button type="button" class="btn btn-li"><i class="fa fa-linkedin pr-1"></i> Linkedin</button>
+<!--Reddit-->
+<button type="button" class="btn btn-reddit"><i class="fa fa-reddit pr-1"></i> Reddit</button>
+</div>
+                        </textarea>
+
+                        <p> Observe a imagem resultante do código acima:</p>
+<img src="images/rooter.png" width="1000" height="500" alt="imagen-02"/>
+
+<br>
+<br>
+<div class="cell small-12">                        
+                            <div class="grid-container">
+                                <div class="grid-x grid-margin-x">
+                                    <div class="cell small-9 bold"> </div>
+                                    <div class="cell small-3">
+                                        <a href="arquivos/Bootstrap.zip" class="hollow button expanded">Download do projeto .zip</a>
+                                    </div>
+                                </div>
+                            </div>                        
+                        </div>                    
+
+
+        <script src="../../../foundation-sites-6.6.3-CSS/assets/js/vendor.js"></script>
+        <script src="../../../foundation-sites-6.6.3-CSS/assets/js/foundation.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+
+    </body>
+</html>
