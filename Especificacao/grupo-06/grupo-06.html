@@ -670,10 +670,8 @@ U ---> (L)
                             <div class="cell small-12">
                                 <p>Descrição: Diagrama correspondente a sequência de funcionamento do processo que um usuário
                                 realiza para analisar um frase que ele deseja saber. O processo funciona com o usuário
-                                abrindo a página inicial e selecionando a opção de analisar, então uma segunda página com
-                                uma caixa de texto será fornecida e após ele digitar e submeter o texto, será carregado
-                                uma terceira página onde estará a análise e uma opção de classificar se o sentimento
-                                devolvido está correto ou não.</p>
+                                abrindo a página de analisar uma frase, então em caixa de texto este deverá digitar e submeter o texto que será salvo
+                                no servidor, analisado por um algoritmo e terá uma análise publicada com o sentimento correspondente à frase.</p>
                             </div>
                             <div class="cell small-12 center">
                                 <img src="images/diagrama-de-sequencia/analise.png" alt="diagrama-de-sequencia"/>
@@ -684,29 +682,34 @@ U ---> (L)
                                     <div class="callout">
                                         <pre>
 @startuml
+autonumber
+
 actor Usuário
 
-collections PaginaInicial
-collections PaginaReqAnalise
-collections PaginaAnaliseConcluida
-collections EnviaAnalise
-collections PréProcessaTexto
-collections GeraClasseAnalise
-collections BancoDeDados
+participant "form:Analise" as pgAnalise
+participant FraseMutation
+participant "frase:Frase" as frase
+participant AnaliseMutation
+participant "analise:Analise" as analise
+participant FraseRepository
+participant AnaliseRepository
+participant SentimentoRepository
+participant ModeloML
 
-PaginaInicial --> PaginaInicial : aguarda_opcao()
-PaginaInicial --> PaginaReqAnalise : abre_pagina()
-PaginaReqAnalise --> PaginaReqAnalise : aguarda_texto()
-Usuário --> PaginaReqAnalise : digita_texto()
-Usuário --> PaginaAnaliseConcluida : aguarda_analise()
-PaginaReqAnalise --> EnviaAnalise : envia_texto()
-EnviaAnalise --> PréProcessaTexto : processa_texto()
-PaginaReqAnalise --> BancoDeDados : armazena_texto()
-PréProcessaTexto --> GeraClasseAnalise : classifica_texto()
-GeraClasseAnalise --> PaginaAnaliseConcluida : retorna_classe()
-PaginaAnaliseConcluida --> PaginaAnaliseConcluida: aguarda_certificacao_analise()
-Usuário --> PaginaAnaliseConcluida : classifica_analise_feita()
-PaginaAnaliseConcluida --> BancoDeDados : armazena_analise_concluida()
+Usuário --> pgAnalise : digita texto
+pgAnalise -->  FraseMutation : envia frase
+FraseMutation -->  frase : cria frase
+frase --> FraseRepository : persiste frase
+FraseRepository --> pgAnalise: retorna frase
+Usuário --> AnaliseMutation: envia usuário id
+pgAnalise --> AnaliseMutation: envia analise
+AnaliseMutation --> analise: cria analise
+analise --> ModeloML: classifica frase
+ModeloML --> SentimentoRepository: recupera sentimento
+SentimentoRepository --> analise: set sentimento
+analise --> AnaliseRepository: persiste analise
+analise --> AnaliseMutation: retorna analise
+AnaliseMutation --> pgAnalise: retorna analise
 
 @enduml
                                         </pre>
@@ -721,7 +724,8 @@ PaginaAnaliseConcluida --> BancoDeDados : armazena_analise_concluida()
                             </div>
                             <div class="cell small-12">
                                 <p>Descrição: Diagrama correspondente a sequência de funcionamento do processo de cadastro de usuário. O processo funciona com o usuário
-                                abrindo o webapp e selecionando onde será levado a tela de cadastro, caso não tenha sido cadastrado, então uma função analisa se o login e já existe e se não, continua o cadastro e se já, volta pra tela inicial .</p>
+                                abrindo o webapp e selecionando onde será levado a tela de cadastro, caso não tenha sido cadastrado, 
+                                então uma função analisa se o login e já existe e se não, continua o cadastro e se já, volta pra tela inicial .</p>
                             </div>
                             <div class="cell small-12 center">
                                 <img src="images/diagrama-de-sequencia/cadastro_usuario.png" alt="diagrama-de-sequencia"/>
@@ -761,7 +765,8 @@ ProcessaCadastro --> EnviaEmail : novo_usuario()
                             </div>
                             <div class="cell small-12">
                                 <p>Descrição: Diagrama correspondente a sequência de funcionamento do processo do histórico de análise. O processo funciona com o usuário
-                                abrindo o webapp e selecionando onde será levado a tela de histórico, e esta pesquisará no banco todas as frases cadastradas e, ao selecionar uma dessas frases trazidas, será feita nova pesquisa no banco que retornará o sentimento correspondente à aquela frase .</p>
+                                abrindo o webapp na tela de histórico e esta pesquisará no banco todas analises realizadas pelo usuário retornando-as com
+                                a frase, o sentimento e a data de realização da análise.</p>
                             </div>
                             <div class="cell small-12 center">
                                 <img src="images/diagrama-de-sequencia/historico_analise.png" alt="diagrama-de-sequencia"/>
@@ -774,22 +779,19 @@ ProcessaCadastro --> EnviaEmail : novo_usuario()
 Histórico de Análise 
 
 @startuml
+autonumber
+
 actor Usuário
 
-collections PaginaInicial 
-collections PaginaHistAnalise
-collections PaginaSentimento
-collections BancoDeDados
+participant pagHistorico
+participant AnaliseQuery
+participant "analise:Analise" as analise
 
-PaginaInicial --> PaginaInicial : aguarda_opcao()
-PaginaInicial --> PaginaHistAnalise : abre_pagina()
-PaginaHistAnalise --> BancoDeDados : carrega_historico()
-BancoDeDados --> PaginaHistAnalise : carrega_historico()
-PaginaHistAnalise --> PaginaHistAnalise : aguarda_opcao()
-PaginaHistAnalise --> BancoDeDados : procura_frase()
-PaginaHistAnalise --> BancoDeDados : procura_sentimento()
-BancoDeDados --> PaginaSentimento : sentimento_encontrado()
-BancoDeDados --> PaginaSentimento : frase_encontrada()
+Usuário --> pagHistorico: entra pagina
+AnaliseQuery --> Usuário: requere id usuário
+Usuário --> AnaliseQuery: envia usuário id
+AnaliseQuery --> analise: recupera analises
+analise --> pagHistorico: exibe analises
 
 @enduml
                                         </pre>
@@ -881,10 +883,10 @@ BancoDeDados --> PaginaSentimento : frase_encontrada()
                                     <p> Para o desenvolvimento deste projeto foram utilizadas as seguintes ferramentas:</p>
 
                                     <ul class="vertical menu">
-                                        <li><a href="https://netbeans.org/">Netbeans 12.0</a></li>
+                                        <li><a href="https://www.jetbrains.com/pt-br/idea/">IntelliJ 2020.2</a></li>
                                         <li><a href="#">Análise de sentimentos</a></li>
                                         <li><a href="#">Graphql</a></li>
-                                        <li><a href="#">Bootstrap</a></li>
+                                        <li><a href="#">Bootstrap 4.5</a></li>
                                     </ul>
                                 </div>
                             </div>
