@@ -523,7 +523,10 @@ Analise "0..*" <-right-> "1" Sentimento : possui >
                                 verificadas as cores correspondente ao sentimento, devendo serem disponibilizadas pelo código hexadecimal.</p>
                             </div>
                             <div class="cell small-12 center">
-                                <img src="images/diagrama-de-casos-de-uso/cadastro_sentimento.png" width="700" alt="diagrama-de-caso-de-uso"/>
+                                <img src="images/especificacao-de-casos-de-uso/cadastrar-sentimento.png" width="700" alt="diagrama-de-caso-de-uso"/>
+                            </div>
+                            <div class="cell small-12 center">
+                                <img src="images/diagrama-de-casos-de-uso/cadastro_sentimento.svg" width="700" alt="diagrama-de-caso-de-uso"/>
                             </div>
                             <div class="cell small-12">
                                 <p class="bold">CÓDIGO FONTE: </p>
@@ -532,15 +535,16 @@ Analise "0..*" <-right-> "1" Sentimento : possui >
                                         <pre>
 @startuml
 
-actor Administrador
+actor Usuário
 
-Administrador --> (CadastrarSentimento) : << dados do sentimento >>
+Usuário--> (CadastrarSentimento) : << dados do sentimento >>
 (CadastrarSentimento) --> (ConsultaSentimentosExistentes) : << include >>
 (ConsultaSentimentosExistentes) --> (ValidaNovoSentimento) :<< include >>
-(CadastrarSentimento) --> (ValidaImagem) : << include >>
-(CadastrarSentimento) --> (ValidaCor) : << include >>
+(CadastrarSentimento) --> (SelecionaImagem) : << include >>
+(CadastrarSentimento) --> (SelecionaCor) : << include >>
 
 @enduml
+                  
                                         </pre>
                                     </div>
                                 </div>
@@ -558,6 +562,9 @@ Administrador --> (CadastrarSentimento) : << dados do sentimento >>
                                 <p>Descrição: Diagrama correspondente ao caso de uso onde o usuário pode ajudar a treinar o modelo. Este procedimento
                                 se dá através do Usuário que cadastra freases referentes ao um emoji selecionado, esta frase então
                                 é cadastrada para aquele respectivo emoji indicando tal sentimento.</p>
+                            </div>
+                             <div class="cell small-12 center">
+                                <img src="images/especificacao-de-casos-de-uso/ajude-treinar-modelo.png" width="700" alt="diagrama-de-caso-de-uso"/>
                             </div>
                             <div class="cell small-12 center">
                                 <img src="images/diagrama-de-casos-de-uso/treinar_modelo.png" width="700" alt="diagrama-de-caso-de-uso"/> 
@@ -602,6 +609,9 @@ U ---> (L)
                             <div class="cell small-12">
                                 <p>Descrição: Diagrama correspondente ao caso de uso onde o usuário é gerado uma frase para o usuário com base no sentimento selecioado. Este procedimento
                                 se dá através do Usuário selecionar um sentimento e ser devolvido a ele uma frase baseada no sentimento selecionado.</p>
+                            </div>
+                            <div class="cell small-12 center">
+                                <img src="images/especificacao-de-casos-de-uso/gerador.png" width="700" alt="diagrama-de-caso-de-uso"/>
                             </div>
                             <div class="cell small-12 center">
                                 <img src="images/diagrama-de-casos-de-uso/gerador_frases.png" width="700" alt="diagrama-de-caso-de-uso"/>
