@@ -25,7 +25,7 @@ public class Sentimento implements Serializable {
 	private String nome;
 	private String descricao;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_imagem", nullable=true, insertable=true, updatable=true)
 	private Imagem imagem;
 

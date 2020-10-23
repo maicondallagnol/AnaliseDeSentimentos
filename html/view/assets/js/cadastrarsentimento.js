@@ -75,33 +75,60 @@ function getImages()
 
 function saveSentimento()
 {
-    const id_imagem_entry = document.querySelector('input[name="selectDog"]:checked').value
-    const nome_entry = document.getElementById("nome").value
-    const descricao_entry = document.getElementById("descricao").value
-    const cor_entry = document.getElementById("cor").value
-
-    mutation=`
-    mutation addSentimento($nome: String!, $descricao: String!, $id_imagem: ID!, $cor: String!)
+    if(!document.querySelector('input[name="selectDog"]:checked'))
     {
-        addSentimento(nome: $nome, descricao: $descricao, id_imagem: $id_imagem, cor: $cor)
+        const select_dog = document.getElementById("selectImg")
+        const select_dog_msg = document.createElement("h3")
+        let node = document.createTextNode("Selecione uma imagem!")
+        select_dog_msg.appendChild(node)
+        select_dog.appendChild(select_dog_msg)
+
     }
-    `
-
-    variaveis = {nome: nome_entry, descricao: descricao_entry, id_imagem: id_imagem_entry, cor: cor_entry}
-
-    queryFetch(mutation, variaveis).then( data => {
-        if(data.data.addSentimento)
+    else
+    {
+        const id_imagem_entry = document.querySelector('input[name="selectDog"]:checked').value
+        const nome_entry = document.getElementById("nome").value
+        const descricao_entry = document.getElementById("descricao").value
+        const cor_entry = document.getElementById("cor").value
+    
+        mutation=`
+        mutation addSentimento($nome: String!, $descricao: String!, $id_imagem: ID!, $cor: String!)
         {
-            const obrigado = document.getElementById("obrigado")
-            obrigado.innerHTML = ''
-            obrigado.style.visibility = "visible"
-            const obrigado_msg = document.createElement("h3")
-            let node = document.createTextNode("Sentimento Cadastrado!")
-            obrigado_msg.appendChild(node)
-
-            obrigado.appendChild(obrigado_msg)
+            addSentimento(nome: $nome, descricao: $descricao, id_imagem: $id_imagem, cor: $cor)
         }
-    })
+        `
+    
+        variaveis = {nome: nome_entry, descricao: descricao_entry, id_imagem: id_imagem_entry, cor: cor_entry}
+    
+        if(nome_entry=="" || descricao_entry=="" || cor=="")
+        {
+    
+            nome = document.getElementById('nome')
+            nome.value = ""
+            nome.placeholder = "Preencha o nome"
+    
+            descricao = document.getElementById('descricao')
+            descricao.value = ""
+            descricao.placeholder = "Preencha a descricao"
+        }
+        else
+        {
+            queryFetch(mutation, variaveis).then( data => {
+                if(data.data.addSentimento)
+                {
+                    const obrigado = document.getElementById("obrigado")
+                    obrigado.innerHTML = ''
+                    obrigado.style.visibility = "visible"
+                    const obrigado_msg = document.createElement("h3")
+                    let node = document.createTextNode("Sentimento Cadastrado!")
+                    obrigado_msg.appendChild(node)
+    
+                    obrigado.appendChild(obrigado_msg)
+                }
+            })
+        }
+    
+    }
 }
 
 function queryFetch(query_entry, variables_entry)

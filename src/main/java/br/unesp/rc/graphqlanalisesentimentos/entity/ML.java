@@ -1,8 +1,6 @@
 package br.unesp.rc.graphqlanalisesentimentos.entity;
 
 import br.unesp.rc.graphqlanalisesentimentos.repository.SentimentoRepository;
-import com.coxautodev.graphql.tools.GraphQLMutationResolver;
-import org.springframework.stereotype.Component;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
@@ -12,7 +10,6 @@ import weka.experiment.InstanceQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
 public class ML {
 
     String model = "/home/maicondallagnol/Documentos/Faculdade/2020/SOO/AnaliseDeSentimentos/src/main/resources/models/classificador.model";
@@ -64,6 +61,8 @@ public class ML {
         NaiveBayes modelo = load_model();
         DenseInstance instance_frase = make_instance(frase, sentimentoReposit);
         double predicao = modelo.classifyInstance(instance_frase);
+        instance_frase.setClassValue(predicao);
+
         String classe = instance_frase.classAttribute().value((int) predicao);
 
         return sentimentoReposit.findIdByNome(classe);

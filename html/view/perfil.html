@@ -119,18 +119,36 @@
                                         <form>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="username"><strong>Username</strong></label><input class="form-control" type="text" placeholder="user.name" name="username"></div>
+                                                    <div class="form-group"><label for="username"><strong>Username</strong></label><input class="form-control" type="text" placeholder="user.name" name="username" id="username"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="email"><strong>Email&nbsp;</strong></label><input class="form-control" type="email" placeholder="user@example.com" name="email"></div>
+                                                    <div class="form-group"><label for="senha"><strong>Senha&nbsp;</strong></label><input class="form-control" type="password" placeholder="***********" name="senha" id="senha"></div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="first_name"><strong>Nome</strong><br></label><input class="form-control" type="text" placeholder="João" name="first_name"></div>
+                                                    <div class="form-group"><label for="email"><strong>Email&nbsp;</strong></label><input class="form-control" type="email" placeholder="user@example.com" name="email" id="email"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="last_name"><strong>Sobrenome</strong></label><input class="form-control" type="text" placeholder="Neves" name="last_name"></div>
+                                                    <div class="form-group"><label for="celular"><strong>Celular</strong></label><input class="form-control" type="text" placeholder="19-999999999" name="celular" id="celular"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label for="first_name"><strong>Nome</strong><br></label><input class="form-control" type="text" placeholder="João" name="first_name" id="nome"></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="last_name"><strong>Sobrenome</strong></label><input class="form-control" type="text" placeholder="Neves" name="last_name" id="sobrenome"></div>
+                                                </div>
+                                            </div>
+                    
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label for="sexo"><strong>Sexo</strong></label><input class="form-control" type="text" placeholder="Masculino" name="sexo" id="sexo"></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="data_nasc"><strong>Data de Nascimento&nbsp;</strong></label><input class="form-control" type="user" placeholder="01/01/2000" name="data_nasc" id="data_nasc"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Salvar Configurações</button></div>
@@ -143,13 +161,20 @@
                                     </div>
                                     <div class="card-body">
                                         <form>
-                                            <div class="form-group"><label for="address"><strong>Endereço</strong></label><input class="form-control" type="text" placeholder="Rua A, 38" name="address"></div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="city"><strong>Cidade</strong></label><input class="form-control" type="text" placeholder="Rio Claro" name="city"></div>
+                                                <label for="address"><strong>Endereço</strong></label><input class="form-control" type="text" placeholder="Rua A, 38" name="address" id="endereco">
+                                            </div>
+                                                <div class="col">
+                                                <label for="cep"><strong>CEP</strong></label><input class="form-control" type="text" placeholder="13506-748" name="address" id="cep">
+                                            </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label for="city"><strong>Cidade</strong></label><input class="form-control" type="text" placeholder="Rio Claro" name="city" id="cidade"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="country"><strong>País</strong></label><input class="form-control" type="text" placeholder="Brasil" name="country"></div>
+                                                    <div class="form-group"><label for="country"><strong>Estado</strong></label><input class="form-control" type="text" placeholder="São Paulo" name="country" id="estado"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Salvar Configurações</button></div>

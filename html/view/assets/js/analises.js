@@ -24,7 +24,7 @@ function getHist()
     const variaveis = {id_usuario: localStorage.id}
 
     queryFetch(query, variaveis).then(data =>{
-            data.data.getAnalises.forEach(analise => {
+            data.data.getAnalises.reverse().forEach(analise => {
                 histSelection.insertRow().innerHTML = 
                 "<td>" + analise.frase.texto + "</td>"+
                 "<td>" + analise.sentimento.nome + "</td>"+
