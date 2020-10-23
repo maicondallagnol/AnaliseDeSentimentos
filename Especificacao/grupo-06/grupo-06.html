@@ -733,12 +733,12 @@ AnaliseMutation --> pgAnalise: retorna analise
                                 <p class = "bold">Cadastro Usuário</p>
                             </div>
                             <div class="cell small-12">
-                                <p>Descrição: Diagrama correspondente a sequência de funcionamento do processo de cadastro de usuário. O processo funciona com o usuário
-                                abrindo o webapp e selecionando onde será levado a tela de cadastro, caso não tenha sido cadastrado, 
-                                então uma função analisa se o login e já existe e se não, continua o cadastro e se já, volta pra tela inicial .</p>
+                                <p>Descrição: Diagrama correspondente a sequência de funcionamento do processo de cadastro de usuário. 
+                                    O processo funciona com o usuário abrindo o webapp e selecionando a tela de cadastro, após preencher todos os dados, 
+                                    uma função analisa se o username já existe ou não, caso não, continua o cadastro, do contrario volta pra tela inicial.</p>
                             </div>
                             <div class="cell small-12 center">
-                                <img src="images/diagrama-de-sequencia/cadastro_usuario.png" alt="diagrama-de-sequencia"/>
+                                <img src="images/diagrama-de-sequencia/cadastro_usuario.svg" alt="diagrama-de-sequencia"/>
                             </div>
                             <div class="cell small-12">
                                 <p class="bold">CÓDIGO FONTE: </p>
@@ -746,21 +746,59 @@ AnaliseMutation --> pgAnalise: retorna analise
                                     <div class="callout">
                                         <pre>
 @startuml
+autonumber
 actor Usuário
 
-collections PaginaInicial 
-collections PaginaCadUsuario
-collections ProcessaCadastro
-collections EnviaEmail
-collections BancoDeDados
+participant "PaginaCadUsuario" as form
+participant "LoginQuery" as loginQry
+participant "LoginRepository" as loginRepo
 
-PaginaInicial --> PaginaInicial : aguarda_opcao()
-PaginaInicial --> PaginaCadUsuario : abre_pagina()
-PaginaCadUsuario --> BancoDeDados : validar_login()
-BancoDeDados --> PaginaCadUsuario : validar_login()
-PaginaCadUsuario --> PaginaCadUsuario : aguarda_texto()
-ProcessaCadastro --> BancoDeDados : gravar_banco()
-ProcessaCadastro --> EnviaEmail : novo_usuario()
+participant "LoginMutation" as loginMuta
+participant login
+participant "LoginRepository" as loginRepo
+
+participant "EnderecoMutation" as endMuta
+participant endereco
+participant "EnderecoRepository" as endRepo
+
+participant "ContatoMutation" as contMuta
+participant contato
+participant "ContatoRepository" as contRepo
+
+participant "UsuarioMutation" as userMuta
+participant usuario
+participant "UsuarioRepository" as userRepo
+
+
+Usuário --> form: adicionar usuario
+form --> loginQry: valida username
+loginQry--> loginRepo: busca username
+loginRepo--> loginQry: retorna validacao
+loginQry--> form: usuario valido
+
+form --> loginMuta: adiciona login
+loginMuta --> login: preenche dados
+login --> loginRepo: persiste dados
+loginRepo --> loginMuta: status cadastro
+loginMuta --> form: status cadastro
+
+form --> endMuta: adiciona endereco
+endMuta --> endereco: preenche dados
+endereco--> endRepo: persiste dados
+endRepo --> endMuta: status cadastro
+endMuta --> form: status cadastro
+
+form --> contMuta: adiciona contato
+contMuta --> contato: preenche dados
+contato--> contRepo: persiste dados
+contRepo --> contMuta: status cadastro
+contMuta --> form: status cadastro
+
+form --> userMuta: adiciona usuario
+userMuta --> usuario: preenche dados
+usuario--> userRepo: persiste dados
+userRepo --> userMuta: status cadastro
+userMuta --> form: status cadastro
 
 @enduml
                                         </pre>
