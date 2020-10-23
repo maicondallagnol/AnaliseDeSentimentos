@@ -399,7 +399,7 @@
                             <p class = "bold"> Diagrama de Classes </p>
                         </div>
                         <div class="cell small-12 center">
-                            <img src="images/diagrama-de-classes/Diagrama de Classe.png" width="900" height="900" alt="diagrama-de-classes"/>
+                            <img src="images/diagrama-de-classes/Diagrama de Classe.svg" width="900" height="900" alt="diagrama-de-classes"/>
                         </div>
                         <div class="cell small-12">
                             <p class="bold">CÓDIGO FONTE: </p>
@@ -413,42 +413,73 @@ skinparam nodesep 70
 
 class Usuario{
 - String nome
+- String sobrenome
+- String dataNasc
+- String sexo
+- Integer idContato
+- Integer idLogin
+- Integer idEndereco
 + Usuario()
 }
+
 class Contato {
 - String email
 - String celular
 + Contato()
 }
 
+class Endereco{
+- String rua
+- String numero
+- String estado
+- String cidade
+- String cep
++ Endereco()
+}
 
 class Login {
-- String usuario
+- String username
 - String senha
+- Date ultimoAcesso
 + Login()
 }
 
 class Frase{
 - String texto
-- Integer idSentimento
-- Integer idUsuario
-- Date dtSubmissão
-- Boolean analiseCorreta
 + Frase()
 }
 
-class Sentimento{
+class Imagem{
+- String caminho
 - String nome
-- String emoticon
-- String cor
++ Imagem()
+}
+
+class Sentimento{
+- Integer idImagem
+- String nome
 - String descricao
+- String cor
 + Sentimento()
 }
 
+class Analise {
+- Integer idFrase
+- Integer idUsuario
+- Integer idSentimento
+- Boolean novo
+- Boolean correto
+- Date dataAnalise
++ Analise ()
+}
+
+Usuario "1" *-up-> "1" Endereco: possui >
 Usuario "1" *-up-> "1" Login : possui >
 Usuario "1" *-left-> "1" Contato : possui >
-Usuario "1" --> "0..*" Frase : cadastra >
-Frase "0..*" o-right-> "1" Sentimento : possui >
+Usuario "1" <--> "0..*" Analise: realiza >
+Analise "1..*" <--> "1" Frase: possui >
+Sentimento "1..*" <--> "1" Imagem: possui >
+Analise "0..*" <-right-> "1" Sentimento : possui >
 @enduml
                                     </pre>
                                 </div>
@@ -796,7 +827,7 @@ BancoDeDados --> PaginaSentimento : frase_encontrada()
                             <p class = "bold"> MER </p>                    
                         </div>
                         <div class="cell small-12 center">
-                            <img src="images/diagrama-mer/mer.png" width="687" height="600" alt="mer"/>
+                            <img src="images/diagrama-mer/diagrama-mer.png" alt="mer"/>
                         </div>
                         <div class="cell small-12">
                             <p class="bold">ARQUIVO DO PROJETO: </p>
